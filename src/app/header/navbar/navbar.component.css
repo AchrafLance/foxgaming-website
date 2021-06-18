@@ -1,0 +1,39 @@
+.main{
+    height: 20vh;
+    background-color: #F6F6F6;
+    font-family: 'Oswald';
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.left-menu{
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 5%;
+}
+
+.left-menu span{
+    margin: 0 15px 0 15px;
+    cursor: pointer;
+}
+.logo img{
+    width: 150px; 
+    height: 150px;
+    margin-right: 30px;
+}
+
+.fa-chevron-down{
+    font-size: xx-small;
+    margin-left: 4px;
+}
+
+.right-menu{
+    margin-right: 5%;
+}
+.right-menu i, .right-menu span{
+    margin: 0 15px 0 15px;
+    cursor: pointer;
+}
+

@@ -16,10 +16,10 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 
       })),
       transition('right => left', [
-        animate('15s 100ms')
+        animate('20s')
       ]),
       transition('left => right', [
-        animate('15s')
+        animate('20s')
       ]),
     ])]
 })

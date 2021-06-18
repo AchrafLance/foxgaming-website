@@ -1,7 +1,12 @@
-.main{
-    height: 20vh;
+
+.container{
     background-color: #F6F6F6;
     font-family: 'Oswald';
+}
+
+.main{
+    height: 20vh;
+ 
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -35,5 +40,8 @@
 .right-menu i, .right-menu span{
     margin: 0 15px 0 15px;
     cursor: pointer;
+}
+.modal{
+    width:100%;
 }
 

@@ -1,19 +1,27 @@
-<div class="main">
-   <div class="left-menu">
-       <div class="logo">
-           <img src="../../../assets/Fox_Gaminglogo_square.png" alt="fxg-logo">
+<div class="container">
+    <div class="main">
+       <div class="left-menu">
+           <div class="logo">
+               <img src="../../../assets/Fox_Gaminglogo_square.png" alt="fxg-logo">
+           </div>
+           <div class="navbar-menu">
+               <span class="teams" (click)="teamsModal()">Teams<i class="fas fa-chevron-down"></i></span>
+               <span class="shop">Shop<i class="fas fa-chevron-down"></i></span>
+               <span class="News">News</span>
+               <span class="media">Media<i class="fas fa-chevron-down"></i></span>
+               <span class="company" aria-hidden="true">Company<i class="fas fa-chevron-down"></i></span>
+           </div>
        </div>
-       <div class="navbar-menu">
-           <span class="teams">Teams<i class="fas fa-chevron-down"></i></span>
-           <span class="shop">Shop<i class="fas fa-chevron-down"></i></span>
-           <span class="News">News</span>
-           <span class="media">Media<i class="fas fa-chevron-down"></i></span>
-           <span class="company" aria-hidden="true">Company<i class="fas fa-chevron-down"></i></span>
+       <div class="right-menu">
+           <span>Login</span>
+           <i class="fas fa-shopping-cart"></i>
+           <i class="fas fa-search"></i>
        </div>
-   </div>
-   <div class="right-menu">
-       <span>Login</span>
-       <i class="fas fa-shopping-cart"></i>
-       <i class="fas fa-search"></i>
-   </div>
+    </div>
+    <div class="modal">
+        <app-teams *ngIf="showTeamsModal"></app-teams>
+    </div>
+    <app-shop class="modal" *ngIf="showShopModal"></app-shop>
+    <app-media class="modal" *ngIf="showMediaModal"></app-media>
+    <app-company class="modal" *ngIf="showCompanyModal"></app-company>
 </div>

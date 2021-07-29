@@ -2,11 +2,11 @@
 .container{
     background-color: #F6F6F6;
     font-family: 'Oswald';
+    box-shadow: 0 4px 5px rgb(85, 85, 85);
 }
 
 .main{
-    height: 20vh;
- 
+    height: 10vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -24,8 +24,8 @@
     cursor: pointer;
 }
 .logo img{
-    width: 150px; 
-    height: 150px;
+    width: 70px; 
+    height: 70px;
     margin-right: 30px;
 }
 
@@ -43,5 +43,18 @@
 }
 .modal{
     width:100%;
+}
+
+div span:hover{
+    color:var(--primary-color);
+}
+.fa-shopping-cart:hover, .fa-search:hover{
+   color: var(--primary-color);
+}
+
+
+app-teams{
+   opacity: 0;
+
 }
 

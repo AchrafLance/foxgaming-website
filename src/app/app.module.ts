@@ -10,6 +10,8 @@ import { TeamsComponent } from './header/navbar/teams/teams.component';
 import { ShopComponent } from './header/navbar/shop/shop.component';
 import { MediaComponent } from './header/navbar/media/media.component';
 import { CompanyComponent } from './header/navbar/company/company.component';
+import { FooterComponent } from './footer/footer.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { CompanyComponent } from './header/navbar/company/company.component';
     TeamsComponent,
     ShopComponent,
     MediaComponent,
-    CompanyComponent
+    CompanyComponent,
+    FooterComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,

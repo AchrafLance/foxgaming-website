@@ -5,6 +5,9 @@
 *{
     box-sizing: border-box;
 }
+:root{
+    --primary-color: rgb(245,84,32); 
+}
 
 body{
     margin: 0; 

@@ -1,0 +1,18 @@
+.main-container{
+    height: 30vh;
+    background-color: black;
+/* background-image: url("../../assets/footer-bg.jpg"); 
+background-size: cover;
+background-repeat: no-repeat; */
+}
+
+img{
+    height: 100px; 
+    width: 100px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+

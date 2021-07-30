@@ -2,7 +2,7 @@
     <div class="main">
         <div class="left-menu">
             <div class="logo">
-                <img src="../../../assets/Fox_Gaminglogo_square.png" alt="fxg-logo">
+                <a routerLink="/home" routerLinkActive="active"><img src="../../../assets/Fox_Gaminglogo_square.png" alt="fxg-logo"></a>
             </div>
             <div class="navbar-menu">
                 <span class="teams" (click)="teamsModal()">Teams<i class="fas fa-chevron-down"></i></span>
@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="right-menu">
-            <span class="login">Login</span>
+            <a routerLink="/login" routerLinkActive="active"><span class="login">Login</span></a>
             <i class="fas fa-shopping-cart"></i>
             <i class="fas fa-search"></i>
         </div>

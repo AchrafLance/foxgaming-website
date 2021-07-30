@@ -41,6 +41,10 @@
     margin: 0 15px 0 15px;
     cursor: pointer;
 }
+
+.right-menu a{
+    text-decoration: none;
+}
 .modal{
     width:100%;
 }

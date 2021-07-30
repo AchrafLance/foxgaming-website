@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  showTeamsModal: boolean =true; 
+  showTeamsModal: boolean =false; 
   showShopModal: boolean = false; 
   showMediaModal: boolean = false; 
   showCompanyModal: boolean = false; 

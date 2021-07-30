@@ -49,8 +49,8 @@ flex-direction: column;
 }
 
 .box{
-    width:120px; 
-    height: 120px;
+    width:250px; 
+    height: 250px;
     border: 1px solid black;
     margin: 10px;
     border-radius: 3%;
@@ -72,7 +72,7 @@ flex-direction: column;
     background-position: center;
 }
 
-.leagueoflegends img{
+ img{
     width:50%; 
     height: 25% ;   
     filter: blur(0px);
@@ -81,8 +81,24 @@ flex-direction: column;
 }
 
 
-.leagueoflegends img:hover{
+img:hover{
     transform: scale(1.5);
     filter: blur(0.5px);
     -webkit-filter: blur(0.5px);
+}
+
+.valorant{
+    background-image: url(../../../../assets/valorantbg-bw.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    transition: background-image 1s;
+}
+
+.valorant:hover{
+    background-image: url(../../../../assets/valorantbg.jpeg);
+    background-size: cover;
+    background-position: center;
 }

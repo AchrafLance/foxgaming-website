@@ -1,0 +1,105 @@
+.carousel{
+    margin: 20px 0;
+}
+
+img{
+    width: 100%;
+}
+
+.sponsors{
+    background-color: rgba(245, 245, 245, 0.857);
+    display:flex; 
+    justify-content: center;
+    margin: 10px 0;
+}
+.sponsors img{
+    height:70px; 
+    width: 70px;
+}
+
+.teams{
+    font-family: 'Roboto', sans-serif;}
+
+
+.teams h1{
+    font-size: 250px;
+    text-align: end;
+    margin-bottom: 0;
+    margin-top: 50px;
+    -webkit-text-stroke: 2px rgb(163, 163, 163);
+    opacity: 0.5;
+    color:white
+
+}
+
+.teams span{
+    color: var(--primary-color);
+}
+
+.teams h2, .teams h3{
+    text-align: center;
+    font-size: 30;
+    margin: 0;
+}
+
+.teams h3{
+    font-weight: 300;
+    font-size: 12;
+}
+
+.desc{
+    position: relative;
+    bottom: 70px;
+}
+
+.boxes{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    bottom: 40px;
+}
+
+.box{
+    width:400px; 
+    height: 600px; 
+    border: 1px solid black;
+    transform: skew(-7deg);
+    margin: 0 25px;
+}
+
+.box:hover .lol, .box:focus .lol,
+.box:hover .valo, .box:focus .valo,
+.box:hover .wildrift, .box:focus .wildrift{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+
+.lol{
+    height: 100%;
+    width: 100%;
+    background-image: url("../../assets/zed-bg.jpg");
+    background-position: center;
+    background-size: cover;
+    transition: all .5s;
+}
+
+.valo{
+    height: 100%;
+    width: 100%;
+    background-image: url("../../assets/valo-bg-2.jpg");
+    background-position: center;
+    background-size: cover;
+    transition: all .5s;
+
+}
+
+.wildrift{
+    height: 100%;
+    width: 100%;
+    background-image: url("../../assets/lol-wildrift-bg.jpg");
+    background-position: center;
+    background-size: cover;
+    transition: all .5s;
+
+}

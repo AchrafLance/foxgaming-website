@@ -1,0 +1,64 @@
+
+.container{
+    background-color: #F6F6F6;
+    font-family: 'Oswald';
+    box-shadow: 0 4px 5px rgb(85, 85, 85);
+}
+
+.main{
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.left-menu{
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 5%;
+}
+
+.left-menu span{
+    margin: 0 15px 0 15px;
+    cursor: pointer;
+}
+.logo img{
+    width: 70px; 
+    height: 70px;
+    margin-right: 30px;
+}
+
+.fa-chevron-down{
+    font-size: xx-small;
+    margin-left: 4px;
+}
+
+.right-menu{
+    margin-right: 5%;
+}
+.right-menu i, .right-menu span{
+    margin: 0 15px 0 15px;
+    cursor: pointer;
+}
+
+.right-menu a{
+    text-decoration: none;
+}
+.modal{
+    width:100%;
+}
+
+div span:hover{
+    color:var(--primary-color);
+}
+.fa-shopping-cart:hover, .fa-search:hover{
+   color: var(--primary-color);
+}
+
+
+app-teams{
+   opacity: 0;
+
+}
+

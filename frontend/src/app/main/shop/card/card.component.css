@@ -1,0 +1,103 @@
+.main-container{
+    display: flex; 
+    justify-content: space-between;
+
+}
+.card-container{
+    max-width: 50vw;
+    flex:3; 
+    display: flex; 
+    justify-content: flex-end;
+}
+
+.card{
+    width: 450; 
+    height: 45vh; 
+    border:1px solid red;
+    margin: 10px 10px;
+    transform: skew(-5deg);
+}
+
+.card img{
+    width: 300px; 
+    height: 45vh; 
+    cursor: pointer;
+}
+
+.card h1{
+    font-size: 15px;
+    margin: 0 5px;
+    color:black;
+    font-weight: 400;
+}
+
+.card h2{
+    color: rgb(0, 0, 0); 
+    font-weight: 500px;
+    font-size: 16px;
+    margin: 0 5px;
+}
+
+.card i{
+    font-size: 30px;
+    margin: 5px 10px;
+    cursor: pointer;
+    transition: all .5s;
+    -webkit-text-stroke: 2px var(--primary-color);
+    color:white;
+
+}
+
+.card i:hover{
+    color: var(--primary-color); 
+    transform: scale(1.1);
+}
+
+
+.merch-title{
+    flex:2;
+}
+
+.merch-title img{
+    position:relative; 
+    bottom: 220px; 
+    width: 80%; 
+    height: 110vh;
+    z-index: 1;
+}
+.merch-title h1{
+    position: relative;
+    bottom: 35px;
+    color:white;
+    margin: 0;
+    font-size: 190px;
+    -webkit-text-stroke: 2px rgb(163, 163, 163);
+}
+
+.merch-title h2{
+    position: relative;
+    bottom: 250px;
+    text-align: start;
+    box-shadow: 0 5px 5ox 0 black;
+    margin: 0 10px;
+
+}
+
+.merch-title h2 span{
+    color: var(--primary-color);
+   
+  
+}
+
+.warranty-policy{
+    position: relative; 
+    bottom:240px;
+    width: 100%;
+    height: 20vh;
+    background-color: black;
+}
+
+.warranty-policy h1{
+    color:white;
+}
+

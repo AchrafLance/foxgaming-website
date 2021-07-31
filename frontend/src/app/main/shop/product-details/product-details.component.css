@@ -1,0 +1,25 @@
+.main-container{
+    display: flex; 
+    height: 100vh;
+    padding: 50px; 
+}
+
+.image-container{
+    border: 1px solid red; 
+    flex:3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.description-container{
+    border:1px solid black; 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex: 4; 
+}
+.image-container img{
+    width: 90%; 
+    height: 60%;
+}

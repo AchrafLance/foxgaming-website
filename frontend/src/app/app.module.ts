@@ -7,7 +7,7 @@ import { TopHeaderComponent } from './header/top-header/top-header.component';
 import { NavbarComponent } from './header/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TeamsComponent } from './header/navbar/teams/teams.component';
-import { ShopComponent } from './header/navbar/shop/shop.component';
+import { ShopComponent } from "./main/shop/shop.component";
 import { MediaComponent } from './header/navbar/media/media.component';
 import { CompanyComponent } from './header/navbar/company/company.component';
 import { FooterComponent } from './footer/footer.component';
@@ -31,6 +31,8 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { CardComponent } from './main/shop/card/card.component';
+import { ProductDetailsComponent } from './main/shop/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
+    CardComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     AppRoutingModule, 

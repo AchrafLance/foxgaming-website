@@ -1,0 +1,52 @@
+.main-container{
+    font-family: "Roboto", sans-serif;
+}
+
+.shop-cover-img{
+    margin: 20px 0;
+    height: 100vh;
+    width: 100%; 
+    background-image: url("../../../assets/merche-carousel.jpg");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.desc{
+    text-align: center;
+    color:white;
+}
+
+.desc h1{
+    color:var(--primary-color); 
+    font-size: 100px;
+    margin:0; 
+}
+
+.desc h2{
+    margin:0; 
+    font-size: 40px;
+}
+
+.desc h3{
+    margin: 0;
+}
+
+.desc button{
+    margin: 10px 0; 
+    color:white; 
+    background-color: var(--primary-color);
+    padding: 10px; 
+    border:1px solid var(--primary-color);
+    transition: all .5s; 
+    width: 30%;
+}
+
+.desc button:hover{
+    color: var(--primary-color); 
+    background-color: white;
+    border:1px solid var(--primary-color);
+    cursor: pointer;
+}

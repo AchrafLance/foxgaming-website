@@ -1,4 +1,3 @@
-
 <div class="main-container">
     <div class="image-container">
         <img [src]="currentProduct.productIcon" alt="jersey-image">
@@ -6,11 +5,34 @@
     <div class="description-container">
         <div class="content">
             <h1>{{currentProduct.productDescription}}</h1>
-            <h2> {{currentProduct.productPrice}}</h2>
-            <h3>Size:S</h3>
-            <h3>Quantity</h3>
-            <button>ADD TO CART</button>
-            <button><i class="fas fa-heart"></i></button>
+            <h2> {{currentProduct.productPrice}}DH</h2>
+            <h3>Size: {{selectedSize}}</h3>
+            <div class="sizes">
+                <div class="box" [ngClass]="{'selected' : sizeS }" (click)='onSelectSizeS()'><span>S</span></div>
+                <div class="box" [ngClass]="{'selected' : sizeM }" (click)='onSelectSizeM()'><span>M</span></div>
+                <div class="box" [ngClass]="{'selected' : sizeL }" (click)='onSelectSizeL()'><span>L</span></div>
+                <div class="box" [ngClass]="{'selected' : sizeXL }" (click)='onSelectSizeXL()'><span>XL</span></div>
+                <div class="box" [ngClass]="{'selected' : size2XL }" (click)='onSelectSize2XL()'><span>2XL</span></div>
+            </div>
+            <div class="quantity">
+                <h3>Quantity: {{selectedQuantity}}</h3>
+                <div class="quantity-container">
+                    <button class="decrementBtn" (click)="onDecrementQty()"><i class="fas fa-minus"></i></button>
+                    <span>{{selectedQuantity}}</span>
+                    <button class="incrementBtn" (click)="onIncrementQty()"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+            <div class="fillingBtns">
+                <button class="addToCardBtn" (click)="onAddToCard(currentProduct)">ADD TO CART</button>
+                <button class="addToWishListBtn" title="add to wishlist" (click)="onAddToWishList(currentProduct)"><i class="fas fa-heart"></i></button>
+            </div>
+            <div class="socials">
+                <h1>SHARE:</h1>
+                <div class="links">
+                    <a [href]="facebookSharer" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a [href]="twitterSharer" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
         </div>
     </div>
 

@@ -6,6 +6,7 @@ import { RegisterComponent } from './authentication/register/register.component'
 import { ShopComponent } from './main/shop/shop.component';
 import { MainComponent } from './main/main.component';
 import { ProductDetailsComponent } from './main/shop/product-details/product-details.component';
+import { CartComponent } from './main/cart/cart.component';
 
 
 
@@ -16,6 +17,7 @@ const routes: Routes = [
     { path: "forgot-password", component: ForgotPasswordComponent},
     { path: "shop", component: ShopComponent},
     { path: "shop/product/:id", component: ProductDetailsComponent},
+    { path: "cart", component: CartComponent},
     { path: "", component: MainComponent}
 ]
 

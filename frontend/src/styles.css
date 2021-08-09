@@ -2,14 +2,20 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
 *{
     box-sizing: border-box;
 }
 :root{
     --primary-color: rgb(245,84,32); 
+
+    --ff-primary: "Oswald", sans-serif; 
+    --ff-secondary: "Roboto", sans-serif; 
 }
 
 body{
     margin: 0; 
     padding: 0;
-}@import '~mdb-angular-ui-kit/assets/scss/mdb.scss';
+}
+
+@import '~mdb-angular-ui-kit/assets/scss/mdb.scss';

@@ -33,6 +33,7 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { CardComponent } from './main/shop/card/card.component';
 import { ProductDetailsComponent } from './main/shop/product-details/product-details.component';
+import { CartComponent } from './main/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { ProductDetailsComponent } from './main/shop/product-details/product-det
     ForgotPasswordComponent,
     CardComponent,
     ProductDetailsComponent,
+    CartComponent,
   ],
   imports: [
     AppRoutingModule, 

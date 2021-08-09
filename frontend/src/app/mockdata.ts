@@ -1,4 +1,5 @@
 import { ProductInfo } from "./models/productInfo";
+import { Order } from "./models/order";
 
 export const products: ProductInfo[] = [
   {
@@ -50,4 +51,22 @@ export const product: ProductInfo = {
   categoryType: 0,
   createTime: '2018-03-10T11:44:25.000+0000',
   updateTime: '2018-03-10T11:44:25.000+0000'
+}
+
+export const order: Order = {
+    orderID: 12, 
+    quantity: 2, 
+    size: "M",
+    product: {
+      productId: 'B0001',
+      productName: 'FXG Jersey',
+      productPrice: 200.00,
+      productStock: 96,
+      productDescription: 'FXG main gaming jersey',
+      productIcon: 'https://personal-images-store.s3.us-east-2.amazonaws.com/fxg-shirt.jpg',
+      productStatus: 0,
+      categoryType: 0,
+      createTime: '2018-03-10T11:44:25.000+0000',
+      updateTime: '2018-03-10T11:44:25.000+0000'
+    }
 }

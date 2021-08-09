@@ -24,7 +24,7 @@ export class ProductDetailsComponent implements OnInit {
   currentRoute:any; 
   facebookSharer = "https://www.facebook.com/sharer/sharer.php?u="
   twitterSharer = "https://twitter.com/intent/tweet?text="
-
+  
   constructor( private route: ActivatedRoute, 
     private shopService: ShopService,
     private router: Router) { }
@@ -119,7 +119,8 @@ export class ProductDetailsComponent implements OnInit {
     order.size = this.selectedSize;
     order.product = product; 
     this.shopService.cardProducts.push(order);
-    console.log(order);
+    this.shopService.changeCartCount(this.shopService.cardProducts.length)
+    console.log(this.shopService.cardProducts);
   }
 
   onAddToWishList(product: ProductInfo){

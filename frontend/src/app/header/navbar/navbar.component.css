@@ -36,6 +36,8 @@
 
 .right-menu{
     margin-right: 5%;
+    display: flex; 
+    align-items: center;
 }
 .right-menu i, .right-menu span{
     margin: 0 15px 0 15px;
@@ -44,7 +46,26 @@
 
 .right-menu a{
     text-decoration: none;
+    color:black; 
 }
+
+.cart-notification{
+    background-color: red;
+    border-radius: 50%;
+    height: 15px;
+    width: 15px; 
+    margin:0; 
+    position: relative;
+    right: 20px;
+    bottom: 5px;
+    font-size: 10px;
+    color:white;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+
 .modal{
     width:100%;
 }

@@ -1,0 +1,172 @@
+h1,
+h2,
+h3,
+p{
+    margin:0; 
+}
+
+.main-container{
+    font-family: "Oswald", sans-serif;
+
+}
+
+.header{
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.wishList, .cartHeader{
+    background-color: rgb(245, 239, 229);
+}
+
+.header h1{
+    font-weight: 800;
+    font-size: 50px;
+    margin-left:30px;
+}
+
+.sub-header{
+    display: flex; 
+    margin-right:30px;
+
+}
+
+.sub-header span{
+    font-weight: 400;
+    margin: 0 20px;
+}
+
+.wishlist-span, .cart-span{
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+
+.wishlist-span::after{
+    background-color: red;
+    height: 2px;
+    content: "";
+    width: 65%;
+}
+
+.cart-span::after{
+    background-color: red;
+    height: 2px;
+    content: "";
+    width: 72%;
+}
+
+.empty-content{
+    text-align: center;
+}
+
+.button-container{
+    margin: 25px 0 45px 0;
+
+}
+.empty-content h1{
+    margin: 15px 0 5px 0;
+    font-size: 15px;
+    font-weight: 400;
+    
+}
+.empty-content a{
+    color:black; 
+    background-color: white;
+    font-size: 16px;
+    padding:16px;
+    border: 1px solid black; 
+    transition: all 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+
+}
+
+.empty-content a:hover{
+    color:white; 
+    background-color: black;
+}
+
+.order{
+    display:flex; 
+    margin: 10px 0; 
+    padding: 10px;
+    
+}
+
+.description{
+    margin: 0 10px;
+}
+
+.description h1{
+    font-size: 20px;
+    text-transform: uppercase ;
+}
+
+.image img{
+    height: 200px; 
+    width: 150px;
+
+}
+
+.description h2{
+    color:rgb(163, 160, 160); 
+    font-size: 12px;
+    font-weight: 400;
+    margin-right: 20px;
+}
+.description button{
+    background-color: white;
+    color:black; 
+    border: none; 
+    transition: all .3s;
+    cursor: pointer;
+}
+
+.description button:hover{
+    color:rgb(162, 37, 37); 
+}
+
+.wishlist{
+    display: flex; 
+    padding: 10px;
+}
+
+.wishlist button{
+    margin: 10px 0; 
+    padding: 7px;
+    background-color: red;
+    color: white; 
+    border: 1px solid red; 
+    font-weight: 800;
+    font-size: 10px;
+    cursor: pointer;
+    transition: all .3s;
+}
+.wishlist button:hover{
+    color:red; 
+    background-color: white;
+}
+.details{
+    display: flex; 
+}
+
+
+
+@media screen and (max-width: 600px) {
+    .header{
+        flex-direction: column;
+        padding: 10px 0;
+    }
+    .header h1{
+        margin: 0;
+        font-size:30px;
+    }
+
+    .subheader span{
+        font-size: smaller;
+    }
+    
+}

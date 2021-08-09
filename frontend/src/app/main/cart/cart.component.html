@@ -1,0 +1,59 @@
+<div class="main-container">
+    <div class="cartHeader header">
+        <h1>MY CART</h1>
+        <div class="sub-header">
+            <div class="cart-span"><span>Shopping List({{cartList.length}})</span></div>
+            <div><span>WishList({{wishList.length}})</span></div>
+        </div>
+    </div>
+   
+    <div class="cart-content">
+
+        <div class="empty-content" *ngIf="cartList.length === 0">
+            <h1>Your cart is currently empty</h1>
+            <div class="button-container"><a routerLink="/shop" routerLinkActive="active">CONTINUE SHOPPING</a></div>
+        </div>
+
+        <div>
+            <div class="order" *ngFor="let order of cartList">
+                <div class="image">
+                    <img src="{{order.product.productIcon}}" alt="product-image">
+                </div>
+                <div class="description">
+                    <h1>{{order.product.productDescription}}</h1>
+                    <div class="details">
+                        <h2>Size: {{order.size}}</h2>
+                        <h2>QTY: {{order.quantity}}</h2>
+                    </div>
+                    <span>{{order.product.productPrice}}DH</span><br>
+                    <button (click)="onRemoveOrder(order)"><i class="fas fa-trash-alt"></i> Remove</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="wishList header">
+        <h1>MY WISHLIST</h1>
+        <div class="sub-header">
+            <div><span>Shopping List({{cartList.length}})</span></div>
+            <div class="wishlist-span"><span>WishList({{wishList.length}})</span></div>
+        </div>
+    </div>
+    <div class="wishlist-content">
+        <div class="empty-content" *ngIf="wishList.length === 0">
+            <h1>Your wishlist is currently empty</h1>
+            <div class="button-container"><a routerLink="/shop" routerLinkActive="active">CONTINUE SHOPPING</a></div>
+        </div>
+        <div class="wishlist" *ngFor="let item of wishList">
+            <div class="image">
+                <img src="{{item.productIcon}}" alt="wishicon">
+            </div>
+            <div class="description">
+                <h1>{{item.productDescription}}</h1>
+                <span>{{item.productPrice}}DH</span><br>
+                <button>ADD TO CARD</button>
+            </div>
+        </div>
+    </div>
+</div>

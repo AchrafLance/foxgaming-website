@@ -1,6 +1,7 @@
 package com.fox.website.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,17 +29,35 @@ public class Wishlist implements Serializable {
     @JsonIgnore
     private User user;
 
-    @ManyToMany(mappedBy = "wishlists")
-    @JsonIgnore
+    @ManyToMany( cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinTable(name="wishlist_products",
+            joinColumns = @JoinColumn(name= "wishlist_id"),
+            inverseJoinColumns = @JoinColumn(name ="product_id"))
     private Set<Product> products = new HashSet<>();
 
-    public Wishlist(User user, HashSet<Product> products){
+    public Wishlist(User user){
         this.user = user;
-        this.products = products;
     }
 
-    public String toString(){
-        return "";
+    public void addProduct(Product product){
+        this.products.add(product);
+        product.getWishlists().add(this);
     }
 
+    public void removeProduct(Product product){
+        this.products.remove(product);
+        product.getWishlists().remove(this);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Wishlist )) return false;
+        return wishlistId != null && wishlistId.equals(((Wishlist) o).getWishlistId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

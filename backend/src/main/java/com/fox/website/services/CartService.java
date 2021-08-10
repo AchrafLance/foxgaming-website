@@ -1,14 +1,14 @@
 package com.fox.website.services;
 
-import com.fox.website.dtos.CartDTO;
+
 import com.fox.website.dtos.OrderDTO;
 import com.fox.website.models.Cart;
 import com.fox.website.models.Order;
 
-import java.util.List;
+import java.util.Set;
 
 public interface CartService {
-     Order addToCart(OrderDTO order);
-     Order deleteItem(Long orderId, Long userId);
-     List<CartDTO> findAllCarts();
+     Cart addOrderToCart(Long userId, Long productId, OrderDTO orderDTO);
+     Cart deleteOrderFromCart(Long userId, Long orderId);
+     Set<Order> findCartOrders(Long userId);
 }

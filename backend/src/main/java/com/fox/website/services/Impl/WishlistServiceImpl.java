@@ -1,6 +1,5 @@
 package com.fox.website.services.Impl;
 
-import ch.qos.logback.core.pattern.parser.OptionTokenizer;
 import com.fox.website.models.Product;
 import com.fox.website.models.User;
 import com.fox.website.models.Wishlist;
@@ -12,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -43,45 +40,19 @@ public class WishlistServiceImpl implements WishlistService {
 
     @Override
     public Wishlist addProductToWishlist(Long productId, Long userId) {
-        Optional<Product> product = productRepository.findById(productId);
-        Optional<User> user = userRepository.findById(userId);
-        if(user.isPresent() && product.isPresent()){
-//            List<Wishlist> wishlists = wishlistRepository.findAll();
-//            Long id = wishlists.get(0).getWishlistId();
-//            Long wishlistId = user.get().getWishlist().getWishlistId();
-//           Optional<Wishlist> wishlist =
-//                   wishlistRepository.findAll().stream().filter(e -> e.getWishlistId().equals(wishlistId)).findFirst();
-//
-//            if(wishlist.isPresent()){
-//                wishlist.get().getProducts().add(product.get());
-////                product.get().getWishlists().add(wishlist.get());
-//                Product savedProduct = productRepository.save(product.get());
-//                wishlistRepository.save(wishlist.get());
-            Wishlist wishlist = user.get().getWishlist();
-            product.get().getWishlists().add(wishlist);
-             productRepository.save(product.get());
-             return  wishlist;
-
-//                return savedProduct;
-            }
-            else{
-                return null;
-            }
-
-        }
-//        else{
-//            return null;
-//        }
-//    }
-
-    @Override
-    public Product deleteProductFromWishlist(Long product, Long userId) {
-        return null;
+        Product product = productRepository.findById(productId).get();
+        User user = userRepository.findById(userId).get();
+        Wishlist wishlist = user.getWishlist();
+        wishlist.addProduct(product);
+        return wishlistRepository.save(wishlist);
     }
 
     @Override
-    public List<Wishlist> getAllWishlists() {
-        List<Wishlist> list = wishlistRepository.findAll();
-        return list;
+    public Wishlist deleteProductFromWishlist(Long productId, Long userId) {
+        Product product = productRepository.findById(productId).get();
+        Wishlist wishlist = userRepository.findById(userId).get().getWishlist();
+        wishlist.removeProduct(product);
+        return wishlistRepository.save(wishlist);
     }
+
 }

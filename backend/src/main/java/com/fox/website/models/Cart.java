@@ -27,8 +27,9 @@ public class Cart implements Serializable {
     @JsonIgnore
     private User user;
 
-    @OneToMany(mappedBy = "cart")
-    @JsonIgnore
+    @OneToMany(mappedBy = "cart",
+               cascade = CascadeType.ALL,
+                orphanRemoval = true)
     private Set<Order> orders = new HashSet<>();
 
     public Cart(User savedUser, HashSet<Order> orders) {
@@ -36,9 +37,21 @@ public class Cart implements Serializable {
         this.orders = orders;
     }
 
-    public String toString(){
-        return "";
+    public void addOrder(Order order){
+        orders.add(order);
+        order.setCart(this);
     }
+
+    public void removeOrder(Order order){
+        orders.remove(order);
+        order.setCart(null);
+    }
+
+
+
+//    public String toString(){
+//        return "";
+//    }
 
 
 

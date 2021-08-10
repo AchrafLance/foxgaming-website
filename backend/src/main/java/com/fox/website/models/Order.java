@@ -4,15 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
-
 import javax.persistence.*;
-import javax.sql.rowset.serial.SerialArray;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+
 
 @Entity
 @Data
@@ -31,24 +26,33 @@ public class Order implements Serializable {
     @NotEmpty
     private Integer quantity;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="card_id")
     @JsonIgnore
     private Cart cart;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="product_id")
     @JsonIgnore
     private Product product;
 
-    public Order(String size, Integer quantity, Product product, Cart cart){
-        this.size = size;
+    public Order(Integer quantity, String size, Cart cart, Product product) {
         this.quantity = quantity;
-        this.product = product;
+        this.size = size;
         this.cart = cart;
+        this.product = product;
     }
 
-    public String toString(){
-        return "";
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Wishlist )) return false;
+        return orderId != null && orderId.equals(((Wishlist) o).getWishlistId());
     }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
+
 }

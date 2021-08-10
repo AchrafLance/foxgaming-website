@@ -7,8 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
-import java.util.List;
+
 import java.util.Set;
 
 @RestController
@@ -21,8 +20,8 @@ public class WishlistController {
         this.wishlistService = wishlistService;
     }
 
-    @PostMapping("{productId}/{userId}")
-    public ResponseEntity<Wishlist> addProductToWishlist(@PathVariable Long productId, @PathVariable Long userId){
+    @PostMapping("/{userId}/product/{productId}")
+    public ResponseEntity<Wishlist> addProductToWishlist(@PathVariable Long userId, @PathVariable Long productId){
         try{
             return ResponseEntity.ok(wishlistService.addProductToWishlist(productId, userId));
         }
@@ -41,13 +40,14 @@ public class WishlistController {
         }
     }
 
-    @GetMapping
-    public ResponseEntity<List<Wishlist>> getAllWishlists(){
+    @DeleteMapping("{userId}/product/{productId}")
+    public ResponseEntity<Wishlist> deleteProductFromWishlist(@PathVariable Long userId, @PathVariable Long productId){
         try{
-            return ResponseEntity.ok(wishlistService.getAllWishlists());
+            return ResponseEntity.ok(wishlistService.deleteProductFromWishlist(productId, userId));
         }
         catch(Exception e){
             return ResponseEntity.badRequest().build();
         }
     }
+
 }

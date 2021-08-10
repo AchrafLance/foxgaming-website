@@ -40,12 +40,10 @@ public class User implements Serializable {
 
     @OneToOne( fetch=FetchType.LAZY)
     @JoinColumn(name="cart_id")
-    @JsonIgnore
     private Cart cart;
 
     @OneToOne( fetch = FetchType.LAZY)
     @JoinColumn(name="wishlist_id")
-    @JsonIgnore
     private Wishlist wishlist;
 
     public String toString(){

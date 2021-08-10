@@ -1,6 +1,6 @@
 package com.fox.website.services.Impl;
 
-import com.fox.website.dtos.CartDTO;
+
 import com.fox.website.dtos.OrderDTO;
 import com.fox.website.models.Cart;
 import com.fox.website.models.Order;
@@ -19,6 +19,7 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class CartServiceImpl implements CartService {
@@ -37,42 +38,26 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public List<CartDTO> findAllCarts() {
-        List<Cart> carts = cartRepository.findAll();
-        List<CartDTO> cartDTOList = new ArrayList<>();
-        for (Cart cart : carts) {
-            cartDTOList.add(new CartDTO(cart.getCartId(), cart.getUser().getUserID()));
-        }
-        return cartDTOList;
-
+    public Set<Order> findCartOrders(Long userId) {
+        return userRepository.findById(userId).get().getCart().getOrders();
     }
 
     @Transactional
-    public Order addToCart(OrderDTO orderDto) {
-        try{
-            Order savedOrder = null;
-            Optional<Product> product = productRepository.findById(orderDto.getProductId());
-            Optional<User> user = userRepository.findById(orderDto.getUserId());
-            if(product.isPresent() && user.isPresent()){
-                    Cart cart = user.get().getCart();
-                    Order order = new Order(orderDto.getSize(), orderDto.getQuantity(), product.get(), cart);
-                    savedOrder = orderRepository.save(order);
-                }
-            return savedOrder;
-        }
-        catch(Exception e){
-            e.printStackTrace();
-            return null;
-        }
-
+    public Cart addOrderToCart(Long userId, Long productId, OrderDTO orderDTO) {
+        Cart cart = userRepository.findById(userId).get().getCart();
+        Product product = productRepository.findById(productId).get();
+        Order order = new Order(orderDTO.quantity, orderDTO.size,cart, product);
+        Order savedOrder = orderRepository.save(order);
+        cart.addOrder(savedOrder);
+        return cartRepository.save(cart);
     }
 
     @Override
-    @Transactional
-    public Order deleteItem(Long orderId, Long userId) {
-        Optional<Order> order = orderRepository.findById(orderId);
-          orderRepository.delete(order.get());
-          return order.get();
+    public Cart deleteOrderFromCart(Long userId, Long orderId) {
+        Cart cart = userRepository.findById(userId).get().getCart();
+        Order order = orderRepository.findById(orderId).get();
+        cart.removeOrder(order);
+        return cartRepository.save(cart);
         }
 
 

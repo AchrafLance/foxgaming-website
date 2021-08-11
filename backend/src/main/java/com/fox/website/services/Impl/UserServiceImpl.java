@@ -26,18 +26,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User register(User user) {
-        User savedUser= userRepository.save(user);
-        Cart savedCart =  cartRepository.save(new Cart(savedUser, new HashSet<Order>()));
-        Wishlist savedWishlist = wishlistRepository.save(new Wishlist(savedUser));
-        savedUser.setCart(savedCart);
-        savedUser.setWishlist(savedWishlist);
-        User savedUser2 = userRepository.save(savedUser);
-        return savedUser2;
-
-    }
-
-    @Override
     public List<User> findAllUsers() {
         return userRepository.findAll();
     }

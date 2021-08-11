@@ -54,6 +54,7 @@ public class Product implements Serializable {
     private Set<Wishlist> wishlists = new HashSet<>();
 
     @OneToMany(mappedBy = "product")
+    @JsonIgnore
     private Set<Order> orders = new HashSet<>();
 
 

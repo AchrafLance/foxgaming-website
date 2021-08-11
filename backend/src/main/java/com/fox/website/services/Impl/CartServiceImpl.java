@@ -5,20 +5,16 @@ import com.fox.website.dtos.OrderDTO;
 import com.fox.website.models.Cart;
 import com.fox.website.models.Order;
 import com.fox.website.models.Product;
-import com.fox.website.models.User;
 import com.fox.website.repositories.CartRepository;
 import com.fox.website.repositories.OrderRepository;
 import com.fox.website.repositories.ProductRepository;
 import com.fox.website.repositories.UserRepository;
 import com.fox.website.services.CartService;
-import org.apache.tomcat.util.buf.UDecoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.security.Principal;
 import java.util.Set;
 
 @Service
@@ -38,14 +34,14 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public Set<Order> findCartOrders(Long userId) {
-        return userRepository.findById(userId).get().getCart().getOrders();
+    public Set<Order> findCartOrders(Principal principal) {
+        return userRepository.findByUsername(principal.getName()).get().getCart().getOrders();
     }
 
     @Transactional
-    public Cart addOrderToCart(Long userId, Long productId, OrderDTO orderDTO) {
-        Cart cart = userRepository.findById(userId).get().getCart();
-        Product product = productRepository.findById(productId).get();
+    public Cart addOrderToCart(Principal principal, OrderDTO orderDTO) {
+        Cart cart = userRepository.findByUsername(principal.getName()).get().getCart();
+        Product product = productRepository.findById(orderDTO.getProductId()).get();
         Order order = new Order(orderDTO.quantity, orderDTO.size,cart, product);
         Order savedOrder = orderRepository.save(order);
         cart.addOrder(savedOrder);
@@ -53,8 +49,8 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public Cart deleteOrderFromCart(Long userId, Long orderId) {
-        Cart cart = userRepository.findById(userId).get().getCart();
+    public Cart deleteOrderFromCart(Principal principal, Long orderId) {
+        Cart cart = userRepository.findByUsername(principal.getName()).get().getCart();
         Order order = orderRepository.findById(orderId).get();
         cart.removeOrder(order);
         return cartRepository.save(cart);

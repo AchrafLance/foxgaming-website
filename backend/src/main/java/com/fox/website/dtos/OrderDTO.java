@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class OrderDTO {
     public Integer quantity;
     public String size;
+    public Long productId;
 }

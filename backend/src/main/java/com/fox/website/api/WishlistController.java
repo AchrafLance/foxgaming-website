@@ -2,12 +2,15 @@ package com.fox.website.api;
 
 import com.fox.website.models.Product;
 import com.fox.website.models.Wishlist;
+import com.fox.website.security.CurrentUser;
 import com.fox.website.services.WishlistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
+import javax.management.loading.PrivateClassLoader;
+import java.security.Principal;
 import java.util.Set;
 
 @RestController
@@ -20,30 +23,30 @@ public class WishlistController {
         this.wishlistService = wishlistService;
     }
 
-    @PostMapping("/{userId}/product/{productId}")
-    public ResponseEntity<Wishlist> addProductToWishlist(@PathVariable Long userId, @PathVariable Long productId){
+    @PostMapping("{productId}")
+    public ResponseEntity<Wishlist> addProductToWishlist(@PathVariable Long productId, Principal principal ){
         try{
-            return ResponseEntity.ok(wishlistService.addProductToWishlist(productId, userId));
+            return ResponseEntity.ok(wishlistService.addProductToWishlist(productId, principal));
         }
         catch(Exception e){
             return ResponseEntity.badRequest().build();
         }
     }
 
-    @GetMapping("{userId}")
-    public ResponseEntity<Set<Product>> allUserWishlistProducts(@PathVariable Long userId){
+    @GetMapping
+    public ResponseEntity<Set<Product>> allUserWishlistProducts(Principal principal){
         try{
-            return ResponseEntity.ok(wishlistService.getWishlistProducts(userId));
+            return ResponseEntity.ok(wishlistService.getWishlistProducts(principal));
         }
         catch(Exception e){
             return ResponseEntity.badRequest().build();
         }
     }
 
-    @DeleteMapping("{userId}/product/{productId}")
-    public ResponseEntity<Wishlist> deleteProductFromWishlist(@PathVariable Long userId, @PathVariable Long productId){
+    @DeleteMapping("{productId}")
+    public ResponseEntity<Wishlist> deleteProductFromWishlist( Principal principal, @PathVariable Long productId){
         try{
-            return ResponseEntity.ok(wishlistService.deleteProductFromWishlist(productId, userId));
+            return ResponseEntity.ok(wishlistService.deleteProductFromWishlist(productId, principal));
         }
         catch(Exception e){
             return ResponseEntity.badRequest().build();

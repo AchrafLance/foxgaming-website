@@ -9,22 +9,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/users")
 public class UserController {
     @Autowired
     UserService userService;
 
-    @PostMapping("/register")
-    public ResponseEntity<User> register(@RequestBody User user){
-        try{
-            return ResponseEntity.ok(userService.register(user));
-        }
-        catch(Exception e){
-            return ResponseEntity.badRequest().build();
-        }
-    }
-
-    @GetMapping("")
+    @GetMapping
     public ResponseEntity<List<User>> users(){
         try{
             return ResponseEntity.ok(userService.findAllUsers());

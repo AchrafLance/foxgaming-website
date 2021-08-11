@@ -22,20 +22,19 @@ public class Cart implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long cartId;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_id")
-    @JsonIgnore
-    private User user;
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name="user_id")
+//    @JsonIgnore
+//    private User user;
 
     @OneToMany(mappedBy = "cart",
                cascade = CascadeType.ALL,
                 orphanRemoval = true)
     private Set<Order> orders = new HashSet<>();
 
-    public Cart(User savedUser, HashSet<Order> orders) {
-        this.user = savedUser;
-        this.orders = orders;
-    }
+//    public Cart(User savedUser) {
+//        this.user = savedUser;
+//    }
 
     public void addOrder(Order order){
         orders.add(order);

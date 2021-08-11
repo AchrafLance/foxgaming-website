@@ -33,7 +33,6 @@ public class Order implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="product_id")
-    @JsonIgnore
     private Product product;
 
     public Order(Integer quantity, String size, Cart cart, Product product) {

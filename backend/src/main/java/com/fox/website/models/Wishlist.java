@@ -24,20 +24,11 @@ public class Wishlist implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long wishlistId;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_id")
-    @JsonIgnore
-    private User user;
-
     @ManyToMany( cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(name="wishlist_products",
             joinColumns = @JoinColumn(name= "wishlist_id"),
             inverseJoinColumns = @JoinColumn(name ="product_id"))
     private Set<Product> products = new HashSet<>();
-
-    public Wishlist(User user){
-        this.user = user;
-    }
 
     public void addProduct(Product product){
         this.products.add(product);

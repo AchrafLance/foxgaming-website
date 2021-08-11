@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Set;
 
@@ -18,31 +19,30 @@ public class CartController {
     CartService cartService;
 
 
-    @GetMapping("{userId}")
-    public ResponseEntity<Set<Order>> getCartOrders(@PathVariable Long userId){
+    @GetMapping
+    public ResponseEntity<Set<Order>> getCartOrders(Principal principal){
         try{
-            return ResponseEntity.ok(cartService.findCartOrders(userId));
+            return ResponseEntity.ok(cartService.findCartOrders(principal));
         }
         catch(Exception e){
             return ResponseEntity.badRequest().build();
         }
     }
 
-     @PostMapping("{userId}/product/{productId}")
-    public ResponseEntity<Cart> addOrderToCart(@PathVariable Long userId, @PathVariable Long productId, @RequestBody OrderDTO orderDTO){
+     @PostMapping
+    public ResponseEntity<Cart> addOrderToCart( Principal principal,@RequestBody OrderDTO orderDTO){
          try{
-             return ResponseEntity.ok(cartService.addOrderToCart(userId, productId, orderDTO));
+             return ResponseEntity.ok(cartService.addOrderToCart(principal, orderDTO));
          }
          catch(Exception e){
              return ResponseEntity.badRequest().build();
          }
      }
 
-     @DeleteMapping("/{userId}/order/{orderId}")
-    public ResponseEntity<Cart> deleteItem(@PathVariable("orderId") Long orderId,
-                                            @PathVariable("userId") Long userId){
+     @DeleteMapping("{orderId}")
+    public ResponseEntity<Cart> deleteItem(@PathVariable("orderId") Long orderId, Principal principal){
         try{
-            return ResponseEntity.ok(cartService.deleteOrderFromCart(userId, orderId));
+            return ResponseEntity.ok(cartService.deleteOrderFromCart(principal, orderId));
         }
         catch(Exception e){
             return ResponseEntity.badRequest().build();

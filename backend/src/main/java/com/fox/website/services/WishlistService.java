@@ -4,10 +4,11 @@ import com.fox.website.models.Product;
 import com.fox.website.models.Wishlist;
 
 
+import java.security.Principal;
 import java.util.Set;
 
 public interface WishlistService {
-    Set<Product> getWishlistProducts(Long userId);
-    Wishlist addProductToWishlist(Long productId, Long userId);
-    Wishlist deleteProductFromWishlist(Long productId, Long userId);
+    Set<Product> getWishlistProducts(Principal principal);
+    Wishlist addProductToWishlist(Long productId, Principal principal);
+    Wishlist deleteProductFromWishlist(Long productId, Principal principal);
 }

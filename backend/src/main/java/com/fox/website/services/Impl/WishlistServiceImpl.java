@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.security.Principal;
 import java.util.Optional;
 import java.util.Set;
 
@@ -29,8 +30,8 @@ public class WishlistServiceImpl implements WishlistService {
     }
 
     @Override
-    public Set<Product> getWishlistProducts(Long userId) {
-        Optional<User> user = userRepository.findById(userId);
+    public Set<Product> getWishlistProducts(Principal principal) {
+        Optional<User> user = userRepository.findByUsername(principal.getName());
         Set<Product> products = null;
         if(user.isPresent()){
             products = user.get().getWishlist().getProducts();
@@ -39,18 +40,18 @@ public class WishlistServiceImpl implements WishlistService {
     }
 
     @Override
-    public Wishlist addProductToWishlist(Long productId, Long userId) {
+    public Wishlist addProductToWishlist(Long productId, Principal principal) {
         Product product = productRepository.findById(productId).get();
-        User user = userRepository.findById(userId).get();
+        User user = userRepository.findByUsername(principal.getName()).get();
         Wishlist wishlist = user.getWishlist();
         wishlist.addProduct(product);
         return wishlistRepository.save(wishlist);
     }
 
     @Override
-    public Wishlist deleteProductFromWishlist(Long productId, Long userId) {
+    public Wishlist deleteProductFromWishlist(Long productId, Principal principal) {
         Product product = productRepository.findById(productId).get();
-        Wishlist wishlist = userRepository.findById(userId).get().getWishlist();
+        Wishlist wishlist = userRepository.findByUsername(principal.getName()).get().getWishlist();
         wishlist.removeProduct(product);
         return wishlistRepository.save(wishlist);
     }

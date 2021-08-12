@@ -1,7 +1,7 @@
 
 
 export class ProductInfo{
-    productId: string;
+    productId: number;
     productName: string;
     productPrice: number;
     productStock: number;

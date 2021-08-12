@@ -34,6 +34,10 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { CardComponent } from './main/shop/card/card.component';
 import { ProductDetailsComponent } from './main/shop/product-details/product-details.component';
 import { CartComponent } from './main/cart/cart.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './_interceptors/jwt-interceptor';
+import { ErrorInterceptor } from './_interceptors/error-interceptor';
 
 @NgModule({
   declarations: [
@@ -72,9 +76,14 @@ import { CartComponent } from './main/cart/cart.component';
     MdbTabsModule,
     MdbTooltipModule,
     MdbValidationModule,
-    IvyCarouselModule
+    IvyCarouselModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

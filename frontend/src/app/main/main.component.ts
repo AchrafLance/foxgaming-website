@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CartService } from '../services/cart-service';
 
 @Component({
   selector: 'app-main',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute,private cartService:CartService) { }
 
   ngOnInit(): void {
+    this.activatedRoute.data.subscribe((data: any) =>{
+      this.cartService.cartItems = data.cartItems; 
+      this.cartService.cartCount.next(data.cartItems.length); 
+    })
+
   }
 
 }

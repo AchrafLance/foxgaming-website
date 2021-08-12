@@ -5,6 +5,8 @@ import { ProductInfo } from 'src/app/models/productInfo';
 import { ShopService } from 'src/app/services/shop.service';
 import { product, products } from "../../../mockdata";
 import { Router} from "@angular/router"
+import { CartService } from 'src/app/services/cart-service';
+import { WishlistService } from 'src/app/services/wishlist-service';
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -27,7 +29,9 @@ export class ProductDetailsComponent implements OnInit {
   
   constructor( private route: ActivatedRoute, 
     private shopService: ShopService,
-    private router: Router) { }
+    private router: Router, 
+    private cartService: CartService,
+    private wishlistService: WishlistService) { }
 
   ngOnInit(): void {
     // this.currentProduct = this.shopService.clickedProduct
@@ -113,18 +117,27 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   onAddToCard(product: ProductInfo){
-    let order = new Order(); 
-    order.orderID = 54; 
+    let order= new Order(); 
     order.quantity = this.selectedQuantity; 
-    order.size = this.selectedSize;
+    order.size = this.selectedSize; 
     order.product = product; 
-    this.shopService.cardProducts.push(order);
-    this.shopService.changeCartCount(this.shopService.cardProducts.length)
-    console.log(this.shopService.cardProducts);
+    this.cartService.addItemToCart(order).subscribe(data=>{
+      if(data){
+        this.cartService.cartItems.push(order);
+        let cartCount = this.cartService.cartCount.value; 
+        this.cartService.cartCount.next(++cartCount);
+        alert('item added to cart'); 
+    
+      }
+    }); 
   }
 
   onAddToWishList(product: ProductInfo){
-    this.shopService.wishlistProducts.push(product);
+    this.wishlistService.addItemToWishlist(product).subscribe(data => {
+      if(data){
+        this.wishlistService.wishlistItems.push(product);
+      }
+    })
   }
 
 }

@@ -6,26 +6,26 @@
             your information please create a new account with the SAME email address.</p>
             <div class="login-container">
                 <div class="fname">
-                    <label for="fname">First Name</label><br>
-                    <input type="text" placeholder="First Name">
+                    <label for="fname">Full Name</label><br>
+                    <input type="text" placeholder="Full Name" [(ngModel)]="fullName">
                 </div>
                 <div class="lname">
-                    <label for="lname">Last Name</label><br>
-                    <input type="text" placeholder="Last Name">
+                    <label for="lname">Username</label><br>
+                    <input type="text" placeholder="Username" [(ngModel)]="username">
                 </div>
                 <div class="email">
                     <label for="email">Email</label><br>
-                    <input type="text" placeholder="Email">
+                    <input type="text" placeholder="Email" [(ngModel)]="email">
                 </div>
                 <div class="password">
                     <label for="password">Password</label><br>
-                    <input type="password" placeholder="Password">
+                    <input type="password" placeholder="Password" [(ngModel)]="password">
                 </div>
                 <div class="checkbox-section">
                     <input type="checkbox"> <span>Keep me up to date on news and offers</span>
                 </div>
             </div>
-            <a routerLink="/home" routerLinkActive="active"><button>REGISTER</button></a>
+            <a (click)="register()"><button>REGISTER</button></a>
     
     </div>
 </div>

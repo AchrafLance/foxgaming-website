@@ -7,15 +7,15 @@
             <div class="login-container">
                 <div class="email">
                     <label for="email">Email</label><br>
-                    <input type="text" placeholder="Email">
+                    <input type="text" placeholder="Email" [(ngModel)]="usernameOrEmail">
                 </div>
                 <div class="password">
                     <label for="password">Password</label><br>
-                    <input type="password" placeholder="Password">
+                    <input type="password" placeholder="Password" [(ngModel)]="password">
                 </div>
                 <a routerLink ="/forgot-password" routerLinkActive="active" >Forgot your password</a>
             </div>
-            <a routerLink="/home" routerLinkActive="active"><button>LOGIN</button> </a>
+            <button (click)="login()">LOGIN</button>
     
     </div>
 </div>

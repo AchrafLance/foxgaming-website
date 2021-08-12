@@ -7,11 +7,12 @@ import { ShopComponent } from './main/shop/shop.component';
 import { MainComponent } from './main/main.component';
 import { ProductDetailsComponent } from './main/shop/product-details/product-details.component';
 import { CartComponent } from './main/cart/cart.component';
+import { CartResolver } from './services/resolvers/cart-resolver';
 
 
 
 const routes: Routes = [
-    { path: 'home', component: MainComponent },
+    { path: 'home', component: MainComponent, resolve: {cartItems: CartResolver} },
     { path : 'login', component: LoginComponent}, 
     { path: "register", component: RegisterComponent},
     { path: "forgot-password", component: ForgotPasswordComponent},

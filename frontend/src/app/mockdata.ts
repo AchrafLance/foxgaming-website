@@ -3,7 +3,7 @@ import { Order } from "./models/order";
 
 export const products: ProductInfo[] = [
   {
-    productId: 'B0001',
+    productId: 1,
     productName: 'FXG Jersey',
     productPrice: 200.00,
     productStock: 96,
@@ -15,7 +15,7 @@ export const products: ProductInfo[] = [
     updateTime: '2018-03-10T11:44:25.000+0000'
   },
   {
-    productId: 'B0002',
+    productId: 2,
     productName: "Akashi Jersey",
     productPrice: 250.00,
     productStock: 195,
@@ -27,7 +27,7 @@ export const products: ProductInfo[] = [
     updateTime: '2018-03-10T15:35:43.000+0000'
   },
   {
-    productId: 'B0001',
+    productId: 3,
     productName: "Akazan's Jersey",
     productPrice: 250.00,
     productStock: 96,
@@ -41,7 +41,7 @@ export const products: ProductInfo[] = [
 ]
 
 export const product: ProductInfo = {
-  productId: 'B0001',
+  productId: 1,
   productName: 'FXG Jersey',
   productPrice: 200.00,
   productStock: 96,
@@ -54,11 +54,11 @@ export const product: ProductInfo = {
 }
 
 export const order: Order = {
-    orderID: 12, 
+    orderId: 12, 
     quantity: 2, 
     size: "M",
     product: {
-      productId: 'B0001',
+      productId: 1,
       productName: 'FXG Jersey',
       productPrice: 200.00,
       productStock: 96,

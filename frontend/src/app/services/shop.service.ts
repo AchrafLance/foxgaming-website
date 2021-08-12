@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Order } from '../models/order';
 import { ProductInfo } from '../models/productInfo';
 
@@ -8,8 +8,8 @@ import { ProductInfo } from '../models/productInfo';
 })
 export class ShopService {
 
-  cartCountSource = new BehaviorSubject<number>(0); 
-  currentCartCount = this.cartCountSource.asObservable(); 
+  cartCountSource: BehaviorSubject<number>;  
+  currentCartCount: Observable<number>;  
 
   
 
@@ -17,7 +17,10 @@ export class ShopService {
   wishlistProducts: ProductInfo[] = []; 
   cardProducts: Order[] = []; 
   
-  constructor() { }
+  constructor() {
+    this.cartCountSource = new BehaviorSubject<number>(0); 
+    this.currentCartCount= this.cartCountSource.asObservable(); 
+   }
   
   changeCartCount(count: number){
     this.cartCountSource.next(count); 

@@ -9,10 +9,10 @@ import { ProductDetailsComponent } from './main/shop/product-details/product-det
 import { CartComponent } from './main/cart/cart.component';
 import { CartResolver } from './services/resolvers/cart-resolver';
 
-
+// resolve: {cartItems: CartResolver}
 
 const routes: Routes = [
-    { path: 'home', component: MainComponent, resolve: {cartItems: CartResolver} },
+    { path: 'home', component: MainComponent,  },
     { path : 'login', component: LoginComponent}, 
     { path: "register", component: RegisterComponent},
     { path: "forgot-password", component: ForgotPasswordComponent},

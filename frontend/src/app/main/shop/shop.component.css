@@ -50,3 +50,23 @@
     border:1px solid var(--primary-color);
     cursor: pointer;
 }
+
+@media screen and (max-width: 800px) {
+    .desc h1{
+        font-size: 60px;
+    }
+    .desc h2{
+        font-size: 20px;
+    
+    }
+    
+}
+
+@media screen and (max-width: 400px){
+    .desc h1{
+        font-size: 40px;
+    }
+    .desc h2{
+        font-size: 15px;
+    }
+}

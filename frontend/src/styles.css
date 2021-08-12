@@ -11,9 +11,10 @@
 
     --ff-primary: "Oswald", sans-serif; 
     --ff-secondary: "Roboto", sans-serif; 
+    font-size: 16px;
 }
 
-body{
+body, h1, h2, h3, p, div{
     margin: 0; 
     padding: 0;
 }

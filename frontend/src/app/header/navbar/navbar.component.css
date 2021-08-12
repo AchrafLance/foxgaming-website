@@ -87,9 +87,10 @@ div span:hover{
     color:var(--primary-color); 
 }
 
-
 app-teams{
    opacity: 0;
 
 }
+
+
 

@@ -8,7 +8,7 @@
         <div class="link"><a routerLink="/shop">SHOP</a></div>
         <div class="link"><a href="#">ABOUT</a></div>
         <div class="link"><a href="#">PROFIL</a></div>
-        <div *ngIf="loggedIn"class="link"><a routerLink="/login">LOGOUT</a></div>
-        <div *ngIf="!loggedIn" (click)="onLogout()" class="link"><span>LOGIN</span>
+        <div *ngIf="loggedIn" (click)="onLogout()" class="link"><a>LOGOUT</a></div>
+        <div *ngIf="!loggedIn" class="link"><span>LOGIN</span>
     </div>
 </div>

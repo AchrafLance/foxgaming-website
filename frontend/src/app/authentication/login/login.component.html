@@ -2,20 +2,26 @@
     <div class="main-container">
         <h1>LOGIN</h1>
         <h2>New to Fox Gaming? <a routerLink="/register" routerLinkActive="active">Create An Account</a></h2>
-        <p>Welcome to our new Shop! To activate your previous account and access
-            your information please create a new account with the SAME email address.</p>
-            <form (ngSubmit)="login(f)" #f="ngForm" class="login-container">
-                <div class="email">
-                    <label for="email">Email</label><br>
-                    <input type="text" placeholder="Email" ngModel name="usernameOrEmail">
-                </div>
-                <div class="password">
-                    <label for="password">Password</label><br>
-                    <input type="password" placeholder="Password" ngModel name="password">
-                </div>
-                <a routerLink ="/forgot-password" routerLinkActive="active" >Forgot your password</a><br>
-                <button type="submit">LOGIN</button>
-            </form>
-    
+        <p class="desc">Welcome to our new Shop! signup and stay connected to
+            the best team in the MENA region.</p>
+        <form (ngSubmit)="login(f)" #f="ngForm" class="login-container">
+            <div class="email">
+                <label for="email">Email</label><br>
+                <input type="text" placeholder="Email" ngModel name="usernameOrEmail" required #email="ngModel">
+                <p class="error" *ngIf="email.invalid && email.touched">
+                    <i class="fas fa-exclamation"></i>please enter a valid email/username
+                </p>
+            </div>
+            <div class="password">
+                <label for="password">Password</label><br>
+                <input type="password" placeholder="Password" ngModel name="password" required #password="ngModel">
+            </div>
+            <p class="error" *ngIf="password.invalid && password.touched">
+                <i class="fas fa-exclamation"></i>please enter a valid password
+            </p>
+            <a routerLink="/forgot-password" routerLinkActive="active">Forgot your password</a><br>
+            <button [class.disabled]="!f.valid && f.touched" [disabled]="!f.valid" type="submit">LOGIN</button>
+        </form>
+
     </div>
 </div>

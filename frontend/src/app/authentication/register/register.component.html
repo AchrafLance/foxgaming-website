@@ -1,30 +1,42 @@
 <div class="root-container">
     <div class="main-container">
         <h1>CREATE AN ACCOUNT</h1>
-        <h2>Already sign up to Fox Gaming? <a routerLink="/login" routerLinkActive="active">Sign in</a></h2>
-        <p>Welcome to our new Shop! To activate your previous account and access
-            your information please create a new account with the SAME email address.</p>
+        <h2>Already sign up to Fox Gaming? <a routerLink="/login" routerLinkActive="active">SIGN IN</a></h2>
+   
             <form (ngSubmit)="register(f)" #f="ngForm" class="login-container">
-                <div class="fname">
+                <div class="input">
                     <label for="fname">Full Name</label><br>
-                    <input type="text" placeholder="Full Name" ngModel name="fullName">
+                    <input type="text" placeholder="Full Name" ngModel name="fullName" required #fullName="ngModel">
+                    <p class="error-msg" *ngIf="fullName.invalid && fullName.touched">
+                        <i class="fas fa-exclamation"></i> field must not be empty
+                    </p>
                 </div>
-                <div class="lname">
+                <div class="input">
                     <label for="lname">Username</label><br>
-                    <input type="text" placeholder="Username" ngModel name="username">
+                    <input type="text" placeholder="Username" ngModel name="username" required #username="ngModel">
+                    <p class="error-msg" *ngIf="username.invalid && username.touched">
+                        <i class="fas fa-exclamation"></i> field must not be empty
+                    </p>
                 </div>
-                <div class="email">
+                <div class="input">
                     <label for="email">Email</label><br>
-                    <input type="text" placeholder="Email" ngModel name="email">
+                    <input type="text" placeholder="Email" ngModel name="email" required email #email="ngModel">
+                    <p class="error-msg" *ngIf="email.invalid && email.touched">
+                        <i class="fas fa-exclamation"></i> please enter a valid email
+                    </p>
                 </div>
-                <div class="password">
+                <div class="input">
                     <label for="password">Password</label><br>
-                    <input type="password" placeholder="Password" ngModel name="password">
+                    <input type="password" placeholder="Password" ngModel name="password"
+                            required minlength="6" #password="ngModel">
+                            <p class="error-msg" *ngIf="password.invalid && password.touched">
+                                <i class="fas fa-exclamation"></i> please enter a valid password
+                            </p>
                 </div>
                 <div class="checkbox-section">
                     <input type="checkbox"> <span>Keep me up to date on news and offers</span>
                 </div>
-                <button type="submit">REGISTER</button>
+                <button [class.disabled]="!f.valid && f.touched" [disabled]="f.invalid" type="submit">REGISTER</button>
             </form>
     
     </div>

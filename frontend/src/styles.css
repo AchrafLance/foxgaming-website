@@ -17,6 +17,12 @@
 body, h1, h2, h3, p, div{
     margin: 0; 
     padding: 0;
+
+}
+
+body.overflow-off{
+    height: 100%; 
+    overflow: hidden;
 }
 
 @import '~mdb-angular-ui-kit/assets/scss/mdb.scss';

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { products } from 'src/app/mockdata';
+import { Router } from '@angular/router';
 import { Order } from 'src/app/models/order';
 import { ProductInfo } from 'src/app/models/productInfo';
 import { CartService } from 'src/app/services/cart-service';
@@ -17,7 +17,8 @@ export class CartComponent implements OnInit {
 
   constructor( private shopService: ShopService, 
     private cartService:CartService, 
-    private wishlistService: WishlistService) { }
+    private wishlistService: WishlistService,
+    private router: Router) { }
 
   ngOnInit(): void {
     // this.cartList = this.cartService.cartItems;
@@ -55,6 +56,10 @@ export class CartComponent implements OnInit {
         this.wishList.splice(index, 1);
       }
     }})
+  }
+
+  addToCart(productId: number){
+    this.router.navigate(["/shop/product/", productId])
   }
 
 }

@@ -1,6 +1,11 @@
+
 .carousel{
     margin: 20px 0;
-}
+} 
+
+.bg{
+    z-index: -1;
+}  
 
 img{
     width: 100%;
@@ -104,6 +109,9 @@ img{
 
 }
 
+
+
+
 @media screen and (max-width: 800px) {
     .teams h1{
         display: none;
@@ -118,6 +126,7 @@ img{
         align-items: center;
     }
     .box{
+        z-index: -1;
         margin: 5px 0; 
         height: 150px;
         width: 70%;
@@ -125,5 +134,7 @@ img{
         border: none;
 
     }
+
+ 
     
 }

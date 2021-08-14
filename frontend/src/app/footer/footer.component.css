@@ -1,16 +1,11 @@
 .main-container{
-    height: 70vh;
+    height: 60vh;
     background-color: black;
     font-family: 'Oswald';
     display: flex; 
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
 
-}
-
-img{
-    height: 100px; 
-    width: 100px;
 }
 
 a{
@@ -18,31 +13,29 @@ a{
     color: white;
 }
 
+
 .socials{
+    margin-top: 20px;
     display: flex; 
     padding: 15px;
     justify-content: center;
 }
 
-.socials a{
+.socials i{
+    font-size: 35px;
     margin: 0 20px; 
 }
 
-.socials a:hover{
+.socials i:hover{
     color:var(--primary-color)
-}
-
-.socials i{
-    font-size: 35px;
 }
 
 .footer-menu{
     display: flex; 
     justify-content: space-around;
-    font-size: 16;
+    font-size: 16px;
     font-weight: 400;
 }
-
 
 .footer-menu a:hover{
     color:var(--primary-color)
@@ -53,6 +46,19 @@ a{
     font-size: 20px;
     font-weight: 500;
 }
+
+.fox-img{
+    flex:2;
+    padding-left: 30px;
+    display:flex; 
+    align-items: center;
+}
+
+.footer-menu img{
+    height: 100px; 
+    width: 100px;
+}
+
 .fox-gaming-section, 
 .shop-section, 
 .teams-section{
@@ -60,12 +66,7 @@ a{
     flex-direction: column;
     flex:2
 }
-.fox-img{
-    flex:2;
-    padding-left: 30px;
-    display:flex; 
-    align-items: center;
-}
+
 .search-payment-section{
     flex:4;
     display: flex; 
@@ -73,26 +74,6 @@ a{
     justify-content:space-around;
 }
 
-.copyrights{
-    font-family: Arial, Helvetica, sans-serif;
-    color:white;
-    font-size: 9px;;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.copyrights a{
-    margin: 0 5px; 
-}
-
-.copyrights a:hover{
-    color: var(--primary-color);
-}
-
-.copyrights-spans{
-    margin: 0 10px;
-}
 
 .search-payment-section h2{
     color:white; 
@@ -100,10 +81,6 @@ a{
     font-weight: 400;
 }
 
-.search{
-    display:flex; 
-    justify-content: center;
-}
 button{
     width: 20%;
     background-color: var(--primary-color);
@@ -113,24 +90,32 @@ button{
     font-family: 'Oswald';
     font-weight: 600;
     transition: background-color 0.5s, color 0.5s ;
-    border-radius:0 10% 10% 0 ;
+    border: 1px solid var(--primary-color);
+    text-transform: uppercase;
+    
+
 }
 
 button:hover{
     color:var(--primary-color); 
     background-color: white; 
+    border: 1px solid var(--primary-color);
     cursor: pointer;
 }
+
+.search{
+    margin-top: 5px;
+    display:flex; 
+    justify-content: stretch;
+}
+
 input{
-    width: 70%;
+    width: 200px;
     padding: 5px;
     border:none;
     outline: none;
     font-family: 'Oswald';
     font-weight: 600;
-    border-radius: 5% 0 0 5%;
-
-
 }
 
 .primary-color{
@@ -158,12 +143,47 @@ input{
 
 .box2{
     background-image: url(../../assets/paypal.png);
-
-
 }
 
 .box3{
     background-image: url(../../assets/visa.png);
+}
 
+.copyrights{
+    font-family: Arial, Helvetica, sans-serif;
+    color:white;
+    font-size: 9px;;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.copyrights a{
+    margin: 0 5px; 
+}
+
+.copyrights a:hover{
+    color: var(--primary-color);
+}
+
+.copyrights-spans{
+    margin: 0 10px;
+}
+
+@media screen and (max-width: 900px) {
+    .search-payment-section{
+        display: none;
+    }
+
+    .footer-menu h1{
+        font-size: 16px;
+        text-transform: uppercase;
+    }
+
+    .footer-menu a{
+        font-size: 12px;
+    }
 
 }
+    

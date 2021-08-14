@@ -3,10 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Order } from 'src/app/models/order';
 import { ProductInfo } from 'src/app/models/productInfo';
 import { ShopService } from 'src/app/services/shop.service';
-import { product, products } from "../../../mockdata";
 import { Router} from "@angular/router"
 import { CartService } from 'src/app/services/cart-service';
 import { WishlistService } from 'src/app/services/wishlist-service';
+import { ProductService } from 'src/app/services/product-service';
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -14,7 +14,7 @@ import { WishlistService } from 'src/app/services/wishlist-service';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  currentProduct: ProductInfo; 
+  currentProduct: any; 
 
   sizeS = false; 
   sizeM = false; 
@@ -25,20 +25,31 @@ export class ProductDetailsComponent implements OnInit {
   selectedQuantity = 1;
   currentRoute:any; 
   facebookSharer = "https://www.facebook.com/sharer/sharer.php?u="
-  twitterSharer = "https://twitter.com/intent/tweet?text="
+  twitterSharer = "https://twitter.com/intent/tweet?text="; 
+  productId: number; 
   
-  constructor( private route: ActivatedRoute, 
+  constructor( private activatedRoute: ActivatedRoute, 
     private shopService: ShopService,
     private router: Router, 
     private cartService: CartService,
-    private wishlistService: WishlistService) { }
+    private wishlistService: WishlistService, 
+    private productService: ProductService) { }
 
   ngOnInit(): void {
-    // this.currentProduct = this.shopService.clickedProduct
-    this.currentProduct =product; 
+    this.activatedRoute.params.subscribe(params => {
+      this.productId = params["id"];       
+    }); 
+
+    this.productService.getOneProduct(this.productId).subscribe(data => {
+      if(data){
+        this.currentProduct = data; 
+      }
+    })
+
+
     this.currentRoute = "http://www.localhost.com" + this.router.url; 
     this.facebookSharer =  this.facebookSharer +   this.currentRoute 
-    this.twitterSharer = this.twitterSharer + product.productName + "\r\n " + this.currentRoute; 
+    this.twitterSharer = this.twitterSharer + this.currentProduct.productName + "\r\n " + this.currentRoute; 
     
     console.log(this.facebookSharer)
 

@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="header">
+        <i (click)="onCloseSideBar()" class="fas fa-times"></i>
+        <img src="../../../assets/fxg-logo-black-white.png" alt="fxg-logo">
+    </div>
+    <div class="menu">
+        <div class="link"><a href="#">TEAMS</a></div>
+        <div class="link"><a routerLink="/shop">SHOP</a></div>
+        <div class="link"><a href="#">ABOUT</a></div>
+        <div class="link"><a href="#">PROFIL</a></div>
+        <div *ngIf="loggedIn"class="link"><a routerLink="/login">LOGOUT</a></div>
+        <div *ngIf="!loggedIn" (click)="onLogout()" class="link"><span>LOGIN</span>
+    </div>
+</div>

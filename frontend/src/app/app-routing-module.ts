@@ -12,14 +12,14 @@ import { CartResolver } from './services/resolvers/cart-resolver';
 // resolve: {cartItems: CartResolver}
 
 const routes: Routes = [
-    { path: 'home', component: MainComponent,  },
+    { path: "", component: MainComponent, resolve: {cartItems: CartResolver}},
+    { path: 'home', component: MainComponent, resolve: {cartItems: CartResolver}  },
     { path : 'login', component: LoginComponent}, 
     { path: "register", component: RegisterComponent},
     { path: "forgot-password", component: ForgotPasswordComponent},
     { path: "shop", component: ShopComponent},
     { path: "shop/product/:id", component: ProductDetailsComponent},
-    { path: "cart", component: CartComponent},
-    { path: "", component: MainComponent}
+    { path: "cart", component: CartComponent}
 ]
 
 @NgModule({

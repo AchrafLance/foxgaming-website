@@ -88,6 +88,10 @@
     color: var(--primary-color)
 }
 
+.card .fa-heart .selected{
+    color: var(--primary-color)
+}
+
 @media screen and (max-width:1000px){
     .merch-title h1{
         font-size: 200px;

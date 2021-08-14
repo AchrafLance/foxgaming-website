@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductInfo } from 'src/app/models/productInfo';
-import { products } from "../../../mockdata"; 
 import { ShopService } from 'src/app/services/shop.service';
+import { ProductService } from 'src/app/services/product-service';
+import { WishlistService } from 'src/app/services/wishlist-service';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -10,20 +11,34 @@ import { ShopService } from 'src/app/services/shop.service';
 })
 export class CardComponent implements OnInit {
 
-  mockProducts: ProductInfo[];  
+  productList: ProductInfo[];  
 
 
   constructor( private route: Router,  
-    private shopService: ShopService) {  }
+    private productService: ProductService,
+    private wishlistService: WishlistService) {  }
 
   ngOnInit(): void {
-    this.mockProducts = products; 
-    console.log(this.mockProducts);
+    this.productService.getAllProducts().subscribe((data:ProductInfo[]) => {
+      if(data){
+        this.productList = data; 
+        console.log(this.productList);
+      }
+    })
+    console.log(this.productList);
   }
 
   onVisiteProduct(product:ProductInfo){
-    this.route.navigate(['shop/product/', product.productId ]); 
-    this.shopService.clickedProduct = product; 
+    this.route.navigate(['shop/product/', product.productId]); 
+  }
+
+  addToWishlist(product: ProductInfo){
+    console.log(product);
+    this.wishlistService.addItemToWishlist(product).subscribe(data =>{
+      if(data){
+        this.wishlistService.wishlistItems.push(product);
+      }
+    })
 
   }
 

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LoginRequest } from 'src/app/models/LoginRequest';
 import { RegisterRequest } from 'src/app/models/RegisterRequest';
 import { AuthService } from 'src/app/services/auth-service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -20,12 +21,12 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  register(){
+  register(form: NgForm){
     let registerRequest = new RegisterRequest(); 
-    registerRequest.name = this.fullName; 
-    registerRequest.username = this.username; 
-    registerRequest.email = this.email; 
-    registerRequest.password = this.password; 
+    registerRequest.name = form.value.fullName; 
+    registerRequest.username = form.value.username; 
+    registerRequest.email = form.value.email; 
+    registerRequest.password = form.value.password; 
 
     this.authService.register(registerRequest).subscribe(data => {
       if(data.success){

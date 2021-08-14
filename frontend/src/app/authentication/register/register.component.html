@@ -4,28 +4,28 @@
         <h2>Already sign up to Fox Gaming? <a routerLink="/login" routerLinkActive="active">Sign in</a></h2>
         <p>Welcome to our new Shop! To activate your previous account and access
             your information please create a new account with the SAME email address.</p>
-            <div class="login-container">
+            <form (ngSubmit)="register(f)" #f="ngForm" class="login-container">
                 <div class="fname">
                     <label for="fname">Full Name</label><br>
-                    <input type="text" placeholder="Full Name" [(ngModel)]="fullName">
+                    <input type="text" placeholder="Full Name" ngModel name="fullName">
                 </div>
                 <div class="lname">
                     <label for="lname">Username</label><br>
-                    <input type="text" placeholder="Username" [(ngModel)]="username">
+                    <input type="text" placeholder="Username" ngModel name="username">
                 </div>
                 <div class="email">
                     <label for="email">Email</label><br>
-                    <input type="text" placeholder="Email" [(ngModel)]="email">
+                    <input type="text" placeholder="Email" ngModel name="email">
                 </div>
                 <div class="password">
                     <label for="password">Password</label><br>
-                    <input type="password" placeholder="Password" [(ngModel)]="password">
+                    <input type="password" placeholder="Password" ngModel name="password">
                 </div>
                 <div class="checkbox-section">
                     <input type="checkbox"> <span>Keep me up to date on news and offers</span>
                 </div>
-            </div>
-            <a (click)="register()"><button>REGISTER</button></a>
+                <button type="submit">REGISTER</button>
+            </form>
     
     </div>
 </div>

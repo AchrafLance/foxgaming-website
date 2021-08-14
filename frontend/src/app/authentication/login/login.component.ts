@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { LoginRequest } from 'src/app/models/LoginRequest';
 import { LoginResponse } from 'src/app/models/LoginResponse';
 import { AuthService } from 'src/app/services/auth-service';
-
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,18 +11,16 @@ import { AuthService } from 'src/app/services/auth-service';
 })
 export class LoginComponent implements OnInit {
 
-  usernameOrEmail:string; 
-  password: string; 
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  login(){
+  login(form: NgForm){
     let loginRequest = new LoginRequest(); 
-    loginRequest.password = this.password; 
-    loginRequest.usernameOrEmail = this.usernameOrEmail; 
+    loginRequest.password = form.value.password; 
+    loginRequest.usernameOrEmail = form.value.usernameOrEmail; 
 
     this.authService.login(loginRequest).subscribe(() => {
         this.router.navigate(['/home']) 

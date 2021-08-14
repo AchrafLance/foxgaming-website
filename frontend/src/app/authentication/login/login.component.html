@@ -4,18 +4,18 @@
         <h2>New to Fox Gaming? <a routerLink="/register" routerLinkActive="active">Create An Account</a></h2>
         <p>Welcome to our new Shop! To activate your previous account and access
             your information please create a new account with the SAME email address.</p>
-            <div class="login-container">
+            <form (ngSubmit)="login(f)" #f="ngForm" class="login-container">
                 <div class="email">
                     <label for="email">Email</label><br>
-                    <input type="text" placeholder="Email" [(ngModel)]="usernameOrEmail">
+                    <input type="text" placeholder="Email" ngModel name="usernameOrEmail">
                 </div>
                 <div class="password">
                     <label for="password">Password</label><br>
-                    <input type="password" placeholder="Password" [(ngModel)]="password">
+                    <input type="password" placeholder="Password" ngModel name="password">
                 </div>
-                <a routerLink ="/forgot-password" routerLinkActive="active" >Forgot your password</a>
-            </div>
-            <button (click)="login()">LOGIN</button>
+                <a routerLink ="/forgot-password" routerLinkActive="active" >Forgot your password</a><br>
+                <button type="submit">LOGIN</button>
+            </form>
     
     </div>
 </div>

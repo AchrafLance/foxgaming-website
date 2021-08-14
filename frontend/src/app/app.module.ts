@@ -35,6 +35,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './_interceptors/jwt-interceptor';
 import { ErrorInterceptor } from './_interceptors/error-interceptor';
+import { SidebarComponent } from './header/sidebar/sidebar.component';
+import { SidebarModule } from 'ng-sidebar';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -51,6 +57,7 @@ import { ErrorInterceptor } from './_interceptors/error-interceptor';
     CardComponent,
     ProductDetailsComponent,
     CartComponent,
+    SidebarComponent,
   ],
   imports: [
     AppRoutingModule, 
@@ -72,7 +79,9 @@ import { ErrorInterceptor } from './_interceptors/error-interceptor';
     MdbValidationModule,
     IvyCarouselModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SidebarModule
+    
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

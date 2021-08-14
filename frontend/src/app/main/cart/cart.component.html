@@ -52,7 +52,7 @@
             <div class="description">
                 <h1>{{item.productDescription}}</h1>
                 <span>{{item.productPrice}}DH</span><br>
-                <button>ADD TO CARD</button> <br>
+                <button (click)="addToCart(item.productId)">ADD TO CARD</button> <br>
                 <button (click)="onRemoveItem(item)"><i class="fas fa-trash-alt"></i> Remove</button>
             </div>
         </div>

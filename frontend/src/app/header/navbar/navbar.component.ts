@@ -38,7 +38,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   teamsModal(){
     this.showTeamsModal = !this.showTeamsModal; 
-    console.log(this.showTeamsModal);
   }
 
   logout(){

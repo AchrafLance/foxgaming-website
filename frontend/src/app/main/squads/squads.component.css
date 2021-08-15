@@ -1,0 +1,20 @@
+.main-container{
+    height: 100%;
+    display: flex; 
+    justify-content: center;
+    align-content: center;
+}
+
+img{
+    margin: 50px 0 200px 0;
+    width: 500px;
+}
+
+h1{
+    font-family: var(--ff-primary);
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 30px 0 0 0; 
+    font-weight: 300;
+
+}

@@ -123,3 +123,16 @@
     }
     
 }
+
+@media screen and (max-width:600px) {
+    .card-container h1{
+        font-size: 8px;
+    }
+    .card-container h2{
+        font-size: 6px;
+    }
+    .merch-title{
+        padding-left: 15px;
+    }
+    
+}

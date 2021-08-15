@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Order } from 'src/app/models/order';
 import { ProductInfo } from 'src/app/models/productInfo';
-import { ShopService } from 'src/app/services/shop.service';
 import { Router} from "@angular/router"
 import { CartService } from 'src/app/services/cart-service';
 import { WishlistService } from 'src/app/services/wishlist-service';
 import { ProductService } from 'src/app/services/product-service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -21,7 +21,7 @@ export class ProductDetailsComponent implements OnInit {
   sizeL = false; 
   sizeXL = false; 
   size2XL = false; 
-  selectedSize: string; 
+  selectedSize = "S"; 
   selectedQuantity = 1;
   currentRoute:any; 
   facebookSharer = "https://www.facebook.com/sharer/sharer.php?u="
@@ -29,11 +29,11 @@ export class ProductDetailsComponent implements OnInit {
   productId: number; 
   
   constructor( private activatedRoute: ActivatedRoute, 
-    private shopService: ShopService,
     private router: Router, 
     private cartService: CartService,
     private wishlistService: WishlistService, 
-    private productService: ProductService) { }
+    private productService: ProductService,
+    private toastrService: ToastrService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -43,15 +43,10 @@ export class ProductDetailsComponent implements OnInit {
     this.productService.getOneProduct(this.productId).subscribe(data => {
       if(data){
         this.currentProduct = data; 
-      }
+        this.currentRoute = "http://www.localhost.com" + this.router.url; 
+        this.facebookSharer =  this.facebookSharer +   this.currentRoute 
+        this.twitterSharer = this.twitterSharer + this.currentProduct.productName + "\r\n " + this.currentRoute;       }
     })
-
-
-    this.currentRoute = "http://www.localhost.com" + this.router.url; 
-    this.facebookSharer =  this.facebookSharer +   this.currentRoute 
-    this.twitterSharer = this.twitterSharer + this.currentProduct.productName + "\r\n " + this.currentRoute; 
-    
-    console.log(this.facebookSharer)
 
     };
 
@@ -137,7 +132,7 @@ export class ProductDetailsComponent implements OnInit {
         this.cartService.cartItems.push(order);
         let cartCount = this.cartService.cartCount.value; 
         this.cartService.cartCount.next(++cartCount);
-        alert('item added to cart'); 
+        this.toastrService.success("item addedd to cart", "Success")
     
       }
     }); 
@@ -147,6 +142,7 @@ export class ProductDetailsComponent implements OnInit {
     this.wishlistService.addItemToWishlist(product).subscribe(data => {
       if(data){
         this.wishlistService.wishlistItems.push(product);
+        this.toastrService.success("item addedd to wishlist", "Success")
       }
     })
   }

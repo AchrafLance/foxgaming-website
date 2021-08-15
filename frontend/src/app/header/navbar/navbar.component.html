@@ -8,10 +8,10 @@
             </div>
             <div class="navbar-menu">
                 <span class="teams" (click)="teamsModal()">Teams<i class="fas fa-chevron-down"></i></span>
-                <span class="shop"><a routerLink="/shop" routerLinkActive="active">Shop</a></span>
-                <span class="News">News</span>
-                <span class="media">Media</span>
-                <span class="company" aria-hidden="true">Company</span>
+                <span class="shop"><a routerLink="/shop">Shop</a></span>
+                <span class="News"><a routerLink="/news">News</a></span>
+                <span class="media"><a routerLink="/media">Media</a></span>
+                <span class="company" aria-hidden="true"><a routerLink="/about">About</a></span>
             </div>
         </div>
         <div class="logo mobile">
@@ -26,8 +26,5 @@
             <i class="fas fa-search"></i>
         </div>
     </div>
-    <!-- <p-sidebar [(visible)]="displaySideBar">
-        Content
-    </p-sidebar> -->
-    <app-teams class="modal" *ngIf="showTeamsModal"></app-teams>
+    <app-teams (closeTeamsTab)="teamsModal()" class="modal" *ngIf="showTeamsModal"></app-teams>
 </div>

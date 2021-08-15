@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth-service';
 
 @Component({
@@ -10,7 +11,7 @@ export class SidebarComponent implements OnInit {
 
   @Output() closeSideBar = new EventEmitter<boolean>(); 
   loggedIn:boolean; 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router:Router) { }
 
   ngOnInit(): void {
     this.authService.loggedIn.subscribe(data =>{
@@ -25,6 +26,13 @@ export class SidebarComponent implements OnInit {
 
   onLogout(){
     this.authService.logout(); 
+    this.closeSideBar.emit(false); 
+
+  }
+
+  onLogin(){
+    this.router.navigate(["/login"]);
+    this.closeSideBar.emit(false); 
   }
 
 }

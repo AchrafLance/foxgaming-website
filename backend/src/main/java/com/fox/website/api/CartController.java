@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -22,7 +23,13 @@ public class CartController {
     @GetMapping
     public ResponseEntity<Set<Order>> getCartOrders(Principal principal){
         try{
-            return ResponseEntity.ok(cartService.findCartOrders(principal));
+            if(principal != null){
+                return ResponseEntity.ok(cartService.findCartOrders(principal));
+
+            }
+            else{
+                return ResponseEntity.ok(new HashSet<>());
+            }
         }
         catch(Exception e){
             return ResponseEntity.badRequest().build();

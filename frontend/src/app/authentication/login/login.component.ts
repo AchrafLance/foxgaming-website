@@ -4,6 +4,7 @@ import { LoginRequest } from 'src/app/models/LoginRequest';
 import { LoginResponse } from 'src/app/models/LoginResponse';
 import { AuthService } from 'src/app/services/auth-service';
 import { NgForm } from '@angular/forms';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,15 +19,15 @@ export class LoginComponent implements OnInit {
   }
 
   login(form: NgForm){
-    // let loginRequest = new LoginRequest(); 
-    // loginRequest.password = form.value.password; 
-    // loginRequest.usernameOrEmail = form.value.usernameOrEmail; 
+    let loginRequest = new LoginRequest(); 
+    loginRequest.password = form.value.password; 
+    loginRequest.usernameOrEmail = form.value.usernameOrEmail; 
 
-    // this.authService.login(loginRequest).subscribe(() => {
-    //     this.router.navigate(['/home']) 
-    //   })  
-
-    console.log(form);
+    this.authService.login(loginRequest).subscribe((data) => {
+      if(data){
+        this.router.navigate(['/home']) 
+      }
+      })  
   }
 
 }

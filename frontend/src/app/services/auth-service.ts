@@ -5,10 +5,11 @@ import { LoginRequest } from "../models/LoginRequest";
 import { API_URL } from "src/environments/environment";
 import { RegisterRequest } from "../models/RegisterRequest";
 import { RegisterResponse } from "../models/RegisterResponse";
-import { catchError, tap, map } from "rxjs/operators";
-import { BehaviorSubject, Observable, of, Subject } from "rxjs";
+import { catchError, map } from "rxjs/operators";
+import { BehaviorSubject, Observable, of } from "rxjs";
 import { Router } from "@angular/router";
-import { StringMapWithRename } from "@angular/compiler/src/compiler_facade_interface";
+import { ToastrService } from 'ngx-toastr';
+
 
 const LOGIN_URL = API_URL + '/auth/signin'; 
 const REGISTER_URL = API_URL + "/auth/signup"; 
@@ -21,7 +22,8 @@ export class AuthService{
     loggedIn: BehaviorSubject<boolean>; 
     accessToken: BehaviorSubject<string>; 
 
-    constructor(private http: HttpClient, private router: Router){
+    constructor(private http: HttpClient, private router: Router, 
+        private toastrSerivce: ToastrService){
         this.loggedIn = new BehaviorSubject<boolean>(localStorage.getItem("accessToken") === null? false: true ); 
         this.accessToken = new BehaviorSubject<string>(localStorage.getItem("accessToken"))
 
@@ -43,7 +45,7 @@ export class AuthService{
                     return loginResponse; 
                 }          
             }), 
-            catchError(this.handleError('Login Failed', null))
+            catchError(this.handleError('Username or password is invalid\nPlease try again!', null))
         )
         
         
@@ -69,8 +71,7 @@ export class AuthService{
      */
      private handleError<T>(operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {
-
-            console.log(error); // log to console instead
+            this.toastrSerivce.error(operation, "Login Failed")
 
             // Let the app keep running by returning an empty result.
             return of(result as T);

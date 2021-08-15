@@ -4,11 +4,12 @@
         <img src="../../../assets/fxg-logo-black-white.png" alt="fxg-logo">
     </div>
     <div class="menu">
-        <div class="link"><a href="#">TEAMS</a></div>
-        <div class="link"><a routerLink="/shop">SHOP</a></div>
-        <div class="link"><a href="#">ABOUT</a></div>
-        <div class="link"><a href="#">PROFIL</a></div>
+        <div class="link" (click)="onCloseSideBar()" ><a routerLink="/squads">TEAMS</a></div>
+        <div class="link" (click)="onCloseSideBar()"><a routerLink="/shop">SHOP</a></div>
+        <div class="link" (click)="onCloseSideBar()"><a routerLink="/news">NEWS</a></div>
+        <div class="link" (click)="onCloseSideBar()"><a routerLink="/media">MEDIA</a></div>
+        <div class="link" (click)="onCloseSideBar()"><a routerLink="/about">ABOUT</a></div>
         <div *ngIf="loggedIn" (click)="onLogout()" class="link"><a>LOGOUT</a></div>
-        <div *ngIf="!loggedIn" class="link"><span>LOGIN</span>
+        <div *ngIf="!loggedIn" (click)="onLogin()" class="link"><span>LOGIN</span>
     </div>
 </div>

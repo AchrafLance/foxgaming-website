@@ -73,7 +73,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/api/auth/**", "/api/product/**")
                 .permitAll()
-                .antMatchers(HttpMethod.GET, "/api/cart/**")
+                .antMatchers(HttpMethod.GET, "/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated();

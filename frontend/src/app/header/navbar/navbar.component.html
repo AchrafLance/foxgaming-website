@@ -21,7 +21,7 @@
             <a *ngIf="!loggedIn" routerLink="/login" routerLinkActive="active"><span class="login">Login</span></a>
             <a *ngIf="loggedIn" (click)='logout()'><span class="login">Logout</span></a>
 
-            <a href="/cart"><i class="fas fa-shopping-cart"></i></a>
+            <a routerLink="/cart"><i class="fas fa-shopping-cart"></i></a>
             <div class="cart-notification">{{itemsInCart}}</div>
             <i class="fas fa-search"></i>
         </div>

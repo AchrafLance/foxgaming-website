@@ -96,6 +96,10 @@ div span:hover{
     transition: all .2s; 
 }
 
+.navbar-menu a.active{
+    color:var(--primary-color)
+}
+
 .navbar-menu a:hover{
     color:var(--primary-color); 
 }

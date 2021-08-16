@@ -10,7 +10,7 @@
             <div class="card" *ngFor="let product of productList">
                 <img (click)="onVisiteProduct(product)" src="{{product.productIcon}}" alt="">
                 <h1>{{product.productDescription}}</h1>
-                <h2>{{product.productPrice}}DH</h2>
+                <h2>{{product.productPrice}} MAD</h2>
                 <i title="add to wishlist" 
                 (click)="addToWishlist(product)" class="fas fa-heart"></i>
                 <i title="add to cart" (click)="onVisiteProduct(product)" class="fas fa-shopping-cart"></i>

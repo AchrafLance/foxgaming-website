@@ -1,42 +1,56 @@
 <div class="main-container">
-    <div class="cartHeader header">
-        <h1>MY CART</h1>
-        <div class="sub-header">
-            <div class="cart-span"><span>Shopping List({{cartList.length}})</span></div>
-            <div><span>WishList({{wishList.length}})</span></div>
+        <div id="cart" class="cartHeader header">
+            <h1>MY CART</h1>
+            <div class="sub-header">
+                <div class="cart-span"><span>Shopping List({{cartList.length}})</span></div>
+                <div><span><a href="cart/#wishlist">WishList({{wishList.length}})</a></span></div>
+            </div>
         </div>
-    </div>
-   
-    <div class="cart-content">
+        <div class="cart-container" [class.empty]="cartList.length === 0">
 
-        <div class="empty-content" *ngIf="cartList.length === 0">
-            <h1>Your cart is currently empty</h1>
-            <div class="button-container"><a routerLink="/shop" routerLinkActive="active">CONTINUE SHOPPING</a></div>
-        </div>
-
-        <div>
-            <div class="order" *ngFor="let order of cartList">
-                <div class="image">
-                    <img src="{{order.product.productIcon}}" alt="product-image">
-                </div>
-                <div class="description">
-                    <h1>{{order.product.productDescription}}</h1>
-                    <div class="details">
-                        <h2>Size: {{order.size}}</h2>
-                        <h2>QTY: {{order.quantity}}</h2>
+        <div class="cart-content ">
+            <div class="empty-content" *ngIf="cartList.length === 0">
+                <h1>Your cart is currently empty</h1>
+                <div class="button-container"><a routerLink="/shop" routerLinkActive="active">CONTINUE SHOPPING</a></div>
+            </div>
+            <div>
+                <div class="order" *ngFor="let order of cartList">
+                    <div class="image">
+                        <img src="{{order.product.productIcon}}" alt="product-image">
                     </div>
-                    <span>{{order.product.productPrice}}DH</span><br>
-                    <button (click)="onRemoveOrder(order)"><i class="fas fa-trash-alt"></i> Remove</button>
+                    <div class="description">
+                        <h1>{{order.product.productDescription}}</h1>
+                        <div class="details">
+                            <h2>Size: {{order.size}}</h2>
+                            <h2>QTY: {{order.quantity}}</h2>
+                        </div>
+                        <span>{{order.product.productPrice}} MAD</span><br>
+                        <button (click)="onUpdateOrder(order)"><i class="fas fa-pen"></i> UPDATE</button>
+                        <button (click)="onRemoveOrder(order)"><i class="fas fa-trash-alt"></i> REMOVE</button>
+                    </div>
                 </div>
+            </div>
+        </div>
+
+        <div *ngIf="cartList.length > 0" class="checkout-container">
+            <div class="title-header"><span>FREE SHIPPING</span> FOR ORDERS FROM CASABLANCA</div>
+            <div class="checkout-content">
+                <h1>ORDER SUMMARY</h1>
+                <div class="total">
+                    <span>Total :</span>
+                    <span>{{totalToPayInMAD}},00 MAD</span>
+                </div>
+                <!-- <button class="checkout-btn" (click)="onCheckout()">PROCEED TO CHECKOUT</button><br> -->
+                <div id="paypal-btn"></div>
             </div>
         </div>
 
     </div>
 
-    <div class="wishList header">
+    <div id="wishlist" class="wishList header">
         <h1>MY WISHLIST</h1>
         <div class="sub-header">
-            <div><span>Shopping List({{cartList.length}})</span></div>
+            <div><a href="/cart/#cart"><span>Shopping List({{cartList.length}})</span></a></div>
             <div class="wishlist-span"><span>WishList({{wishList.length}})</span></div>
         </div>
     </div>
@@ -51,9 +65,9 @@
             </div>
             <div class="description">
                 <h1>{{item.productDescription}}</h1>
-                <span>{{item.productPrice}}DH</span><br>
-                <button (click)="addToCart(item.productId)">ADD TO CARD</button> <br>
-                <button (click)="onRemoveItem(item)"><i class="fas fa-trash-alt"></i> Remove</button>
+                <span>{{item.productPrice}} MAD</span><br>
+                <button (click)="addToCart(item.productId)" class="addToCart-btn"> <i class="fas fa-plus-circle"></i> ADD</button> 
+                <button (click)="onRemoveItem(item)" class="removeFromCart-btn"><i class="fas fa-trash-alt"></i> REMOVE</button>
             </div>
         </div>
     </div>

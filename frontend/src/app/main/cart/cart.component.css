@@ -38,6 +38,75 @@ p{
     margin: 0 20px;
 }
 
+/*CHECKOUT SECTION ---------------- */
+
+.cart-container{
+    display:flex; 
+    justify-content: space-between;
+    padding: 25px; 
+    
+}
+
+.cart-container.empty{
+    display:block;
+}
+
+.checkout-container{
+    width: 500px;
+    max-height: 300px;
+    text-align: center;
+    background-color: wheat;
+}
+
+.title-header{
+    padding:5px;
+    color:white; 
+    background-color: black;
+    font-size: 0.7rem;
+    font-weight: 300;
+}
+
+.title-header span{
+    font-weight: 700;
+}
+
+.checkout-content{
+    padding: 15px 15px 35px 15px;
+}
+
+.checkout-container h1{
+    font-size: 1.5rem;
+    margin: 20px
+}
+
+.total{
+    display: flex; 
+    justify-content: space-between;
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
+    margin-bottom: 25px;
+    padding:5px 0;
+}
+
+.checkout-btn{
+    width: 100%; 
+    padding: 10px; 
+    background-color: var(--primary-color);
+    font-weight: 800;
+    color:white; 
+    border:none; 
+    cursor: pointer;
+    transition: all .5s;
+    margin: 2px 0;
+}
+
+.checkout-btn:hover{
+    background-color:rgb(201, 64, 0);
+
+}
+
+/* CHECKOUT SECTION END -----------------*/
+
 .wishlist-span, .cart-span{
     display: flex; 
     flex-direction: column;
@@ -97,17 +166,20 @@ p{
 }
 
 .description{
-    margin: 0 10px;
+    margin: 10px 10px;
 }
 
 .description h1{
-    font-size: 20px;
+    font-size: 16px;
     text-transform: uppercase ;
+    font-family: var(--ff-secondary);
 }
 
 .image img{
-    height: 200px; 
-    width: 150px;
+    height: 250px; 
+    width: 200px;
+    box-shadow: 5px 5px 5px 1px black;
+    margin-right: 10px;
 
 }
 
@@ -119,10 +191,14 @@ p{
 }
 .description button{
     background-color: white;
+    border:1px solid black; 
+    font-family: var(--ff-secondary);
+    margin: 5px 5px 0px 0px;
+    padding: 5px;
     color:black; 
-    border: none; 
     transition: all .3s;
     cursor: pointer;
+    font-size: 0.6rem;
 }
 
 .description button:hover{
@@ -132,18 +208,20 @@ p{
 .wishlist{
     display: flex; 
     padding: 10px;
+    padding: 30px 30px 5px 30px
 }
 
 .wishlist button{
-    margin: 10px 0; 
+    margin: 10px 5px 0px 0px; 
     padding: 7px;
-    background-color: red;
-    color: white; 
-    border: 1px solid red; 
+    background-color: white;
+    color: black; 
+    border: 1px solid black; 
     font-weight: 800;
     font-size: 10px;
     cursor: pointer;
     transition: all .3s;
+    font-family: var(--ff-secondary);
 }
 .wishlist button:hover{
     color:red; 
@@ -154,6 +232,17 @@ p{
 }
 
 
+@media screen and (max-width: 700px) {
+    .cart-container{
+        flex-direction: column;
+    }
+
+    .checkout-container{
+        margin:0 auto;
+        width: 100%
+    }
+    
+}
 
 @media screen and (max-width: 600px) {
     .header{
@@ -168,5 +257,5 @@ p{
     .subheader span{
         font-size: smaller;
     }
-    
+  
 }

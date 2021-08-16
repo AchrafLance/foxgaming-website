@@ -57,7 +57,7 @@ import { SquadsComponent } from './main/squads/squads.component';
     FormsModule,
     HttpClientModule,   
     ToastrModule.forRoot({
-      timeOut: 2500,
+      timeOut: 3000,
       positionClass: 'toast-top-right'
     }) 
   ],

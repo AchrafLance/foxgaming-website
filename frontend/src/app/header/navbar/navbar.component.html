@@ -8,10 +8,10 @@
             </div>
             <div class="navbar-menu">
                 <span class="teams" (click)="teamsModal()">Teams<i class="fas fa-chevron-down"></i></span>
-                <span class="shop"><a routerLink="/shop">Shop</a></span>
-                <span class="News"><a routerLink="/news">News</a></span>
-                <span class="media"><a routerLink="/media">Media</a></span>
-                <span class="company" aria-hidden="true"><a routerLink="/about">About</a></span>
+                <span class="shop"><a routerLink="/shop" routerLinkActive="active">Shop</a></span>
+                <span class="News"><a routerLink="/news" routerLinkActive="active">News</a></span>
+                <span class="media"><a routerLink="/media" routerLinkActive="active">Media</a></span>
+                <span class="company" aria-hidden="true"><a routerLink="/about" routerLinkActive="active">About</a></span>
             </div>
         </div>
         <div class="logo mobile">
@@ -21,7 +21,7 @@
             <a *ngIf="!loggedIn" routerLink="/login" routerLinkActive="active"><span class="login">Login</span></a>
             <a *ngIf="loggedIn" (click)='logout()'><span class="login">Logout</span></a>
 
-            <a routerLink="/cart" routerLinkActive="active"><i class="fas fa-shopping-cart"></i></a>
+            <a href="/cart"><i class="fas fa-shopping-cart"></i></a>
             <div class="cart-notification">{{itemsInCart}}</div>
             <i class="fas fa-search"></i>
         </div>

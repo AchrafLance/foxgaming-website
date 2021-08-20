@@ -7,6 +7,7 @@ import { CartService } from 'src/app/services/cart-service';
 import { WishlistService } from 'src/app/services/wishlist-service';
 import { ProductService } from 'src/app/services/product-service';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService} from 'ngx-spinner'
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -33,9 +34,14 @@ export class ProductDetailsComponent implements OnInit {
     private cartService: CartService,
     private wishlistService: WishlistService, 
     private productService: ProductService,
-    private toastrService: ToastrService) { }
+    private toastrService: ToastrService, 
+    private spinnerService: NgxSpinnerService) { }
 
   ngOnInit(): void {
+    this.spinnerService.show(); 
+    setTimeout(()=>{
+      this.spinnerService.hide()
+    }, 1000)
     this.activatedRoute.params.subscribe(params => {
       this.productId = params["id"];       
     }); 

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -24,6 +24,7 @@ import { ErrorInterceptor } from './_interceptors/error-interceptor';
 import { SidebarComponent } from './header/sidebar/sidebar.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
+
 import { NewsComponent } from './main/news/news.component';
 import { MediaComponent } from './main/media/media.component';
 import { AboutComponent } from './main/about/about.component';
@@ -63,6 +64,8 @@ import { SquadsComponent } from './main/squads/squads.component';
     }), 
     NgxSpinnerModule 
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
   
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

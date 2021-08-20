@@ -5,6 +5,8 @@ import { Order } from 'src/app/models/order';
 import { ProductInfo } from 'src/app/models/productInfo';
 import { CartService } from 'src/app/services/cart-service';
 import { WishlistService } from 'src/app/services/wishlist-service';
+import { NgxSpinnerService } from "ngx-spinner";
+
 
 declare var paypal; 
 const ToEuro = 0.095; 
@@ -26,10 +28,17 @@ export class CartComponent implements OnInit   {
   constructor(private cartService: CartService,
     private wishlistService: WishlistService,
     private router: Router,
-    private toastrService: ToastrService) {
+    private toastrService: ToastrService, 
+    private spinnerService: NgxSpinnerService) {
+     
+  }
+
+  ngOnInit(): void {
+
+    this.spinnerService.show(); 
     this.intervalId = setInterval(() => {
       const elementExists = !!document.getElementById('paypal-btn')
-      console.log("elementExist" + elementExists)
+      console.log("elementExist" + elementExists);
       if (elementExists) {
         clearInterval(this.intervalId)
         paypal.Buttons({
@@ -61,12 +70,13 @@ export class CartComponent implements OnInit   {
             console.log(err);
             this.toastrService.error("something went wrong, please try again")
           }
-        }).render("#paypal-btn")
+        }).render("#paypal-btn"); 
+        this.spinnerService.hide(); 
+
       }
     }, 1000)
-  }
+ 
 
-  ngOnInit(): void {
     this.cartService.getAllCartItems().subscribe(data => {
       if(data){
         this.cartList = data; 

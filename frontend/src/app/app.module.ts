@@ -23,6 +23,7 @@ import { JwtInterceptor } from './_interceptors/jwt-interceptor';
 import { ErrorInterceptor } from './_interceptors/error-interceptor';
 import { SidebarComponent } from './header/sidebar/sidebar.component';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from "ngx-spinner";
 import { NewsComponent } from './main/news/news.component';
 import { MediaComponent } from './main/media/media.component';
 import { AboutComponent } from './main/about/about.component';
@@ -59,7 +60,8 @@ import { SquadsComponent } from './main/squads/squads.component';
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right'
-    }) 
+    }), 
+    NgxSpinnerModule 
   ],
   
   providers: [

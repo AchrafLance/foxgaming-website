@@ -21,12 +21,50 @@ export class CartComponent implements OnInit   {
   cartList: Order[] = []; 
   wishList : ProductInfo[] =[]; 
   totalToPayInMAD = 0; 
-  totalToPayInUSD; 
+  intervalId; 
 
-  constructor(  private cartService:CartService, 
+  constructor(private cartService: CartService,
     private wishlistService: WishlistService,
-    private router: Router, 
-    private toastrService: ToastrService) { }
+    private router: Router,
+    private toastrService: ToastrService) {
+    this.intervalId = setInterval(() => {
+      const elementExists = !!document.getElementById('paypal-btn')
+      console.log("elementExist" + elementExists)
+      if (elementExists) {
+        clearInterval(this.intervalId)
+        paypal.Buttons({
+          style: {
+            color: 'gold',
+            size: 'responsive',
+            fundingicons: 'true',
+            layout: 'horizontal',
+            tagline: 'false'
+
+          },
+          funding: {
+            disallowed: [paypal.FUNDING.CREDIT, paypal.FUNDING.CARD]
+          },
+          createOrder: (data, actions) => {
+            return actions.order.create({
+              purchase_units: [{
+                description: "FXG Merch",
+                amount: {
+                  currency_code: "USD",
+                  value: this.totalToPayInMAD * ToUSD
+                }
+              }]
+            });
+          }, onApprove: async (data, actions) => {
+            const order = await actions.order.capture();
+            this.toastrService.success("paiment successful")
+          }, onError: err => {
+            console.log(err);
+            this.toastrService.error("something went wrong, please try again")
+          }
+        }).render("#paypal-btn")
+      }
+    }, 1000)
+  }
 
   ngOnInit(): void {
     this.cartService.getAllCartItems().subscribe(data => {
@@ -44,42 +82,6 @@ export class CartComponent implements OnInit   {
         this.wishList = data; 
       }
     })
-
-    paypal.Buttons({
-      style:{
-        color:'gold',
-        size:'responsive',
-        fundingicons: 'true',
-        layout: 'horizontal',
-        tagline: 'false'
-
-      },
-      funding: {
-        disallowed: [ paypal.FUNDING.CREDIT, paypal.FUNDING.CARD ]
-       },
-      createOrder: (data, actions) =>{
-        return actions.order.create({
-          purchase_units: [{
-            description: "FXG Merch", 
-            amount:{
-              currency_code: "USD",
-              value: this.totalToPayInMAD*ToUSD
-            }
-          }]
-        });
-      }, onApprove: async (data, actions) => {
-        const order = await actions.order.capture(); 
-        this.toastrService.success("paiment successful")
-      }, onError: err => {
-        console.log(err); 
-        this.toastrService.error("something went wrong, please try again")
-      }
-    }).render("#paypal-btn")
-
-    
-   
-
-   
   }
 
   onRemoveOrder(order: Order) {

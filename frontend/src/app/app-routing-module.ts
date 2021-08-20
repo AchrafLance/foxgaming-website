@@ -14,11 +14,10 @@ import { MediaComponent } from './main/media/media.component';
 import { AboutComponent } from './main/about/about.component';
 import { SquadsComponent } from './main/squads/squads.component';
 
-// resolve: {cartItems: CartResolver}
 
 const routes: Routes = [
-    { path: "", component: MainComponent, resolve: {cartItems: CartResolver} },
-    { path: "home", component: MainComponent, resolve: {cartItems: CartResolver}  },
+    { path: "", component: MainComponent, resolve: {cartItems: CartResolver}},
+    { path: "home", component: MainComponent, resolve: {cartItems: CartResolver}},
     { path : "login", component: LoginComponent}, 
     { path: "register", component: RegisterComponent},
     { path: "forgot-password", component: ForgotPasswordComponent},

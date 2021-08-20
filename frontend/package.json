@@ -22,6 +22,7 @@
     "@angular/router": "~11.2.13",
     "angular-responsive-carousel": "^2.1.2",
     "chart.js": "^3.1.1",
+    "ngx-spinner": "^12.0.0",
     "ngx-toastr": "^14.1.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

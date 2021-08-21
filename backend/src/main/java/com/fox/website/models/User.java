@@ -54,6 +54,10 @@ public class User  extends DateAudit {
     @JoinColumn(name="wishlist_id")
     private Wishlist wishlist;
 
+    @OneToOne( mappedBy = "user", fetch = FetchType.LAZY)
+    @JoinColumn(name="password_reset_token")
+    private PasswordResetToken passwordResetToken;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),

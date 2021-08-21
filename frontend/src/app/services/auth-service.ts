@@ -62,6 +62,17 @@ export class AuthService{
         return this.http.post<RegisterResponse>(REGISTER_URL, registerRequest);
     }
 
+    resetPassowrd(email:string){
+        let url = API_URL + "/auth/resetPassword"; 
+        let body = {email: email}; 
+        return this.http.post(url, body)
+    }
+    updatePassword(password: string, token: string){
+        let body = {password: password, token: token}; 
+        let url = API_URL + "/auth/updatePassword";
+        return this.http.post(url, body); 
+    }
+
     
     /**
      * Handle Http operation that failed.

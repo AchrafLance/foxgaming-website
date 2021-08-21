@@ -29,6 +29,7 @@ import { NewsComponent } from './main/news/news.component';
 import { MediaComponent } from './main/media/media.component';
 import { AboutComponent } from './main/about/about.component';
 import { SquadsComponent } from './main/squads/squads.component';
+import { ChangePasswordComponent } from './authentication/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { SquadsComponent } from './main/squads/squads.component';
     MediaComponent,
     AboutComponent,
     SquadsComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     AppRoutingModule, 

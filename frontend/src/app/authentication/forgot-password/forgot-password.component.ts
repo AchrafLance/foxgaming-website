@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/services/auth-service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -9,13 +12,21 @@ import { Router } from '@angular/router';
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private authService: AuthService, 
+    private toastrService: ToastrService,
+    private spinnerService:NgxSpinnerService) { }
 
   ngOnInit(): void {
   }
 
   resetPassword(form: NgForm){
-    this.router.navigate(["/home"]);
+    let email = form.value.email; 
+    this.spinnerService.show()
+    this.authService.resetPassowrd(email).subscribe(() => {
+      this.spinnerService.hide(); 
+      this.toastrService.success("check your email to reset your password"); 
+      this.router.navigate(["/home"]);
+      })
 
   }
 

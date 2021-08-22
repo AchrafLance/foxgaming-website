@@ -38,4 +38,7 @@ public class PasswordResetToken {
         this.user = user;
         this.expiryDate = date;
     }
+    public PasswordResetToken(String token) {
+        this.token = token;
+    }
 }

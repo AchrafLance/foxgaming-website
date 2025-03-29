@@ -1,127 +1,134 @@
 @keyframes openSideBar {
-    from {left: -300px;}
-    to {left: 0px;}
+  from {
+    left: -300px;
   }
+  to {
+    left: 0px;
+  }
+}
+
 @keyframes closeSideBar {
-    from {left: 0;}
-    to {left: -300px;}
+  from {
+    left: 0;
   }
-
-.container{
-    background-color: #F6F6F6;
-    font-family: 'Oswald';
-    box-shadow: 0 4px 5px rgb(85, 85, 85);
+  to {
+    left: -300px;
+  }
 }
 
-.main{
-    /* height: 10vh; */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.container {
+  background-color: #F6F6F6;
+  font-family: 'Oswald';
+  box-shadow: 0 4px 5px rgb(85, 85, 85);
 }
 
-.left-menu{
-    display: flex; 
-    align-items: center;
-    justify-content: space-between;
-    margin-left: 5%;
+.main {
+  /* height: 10vh; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.left-menu span{
-    margin: 0 15px 0 15px;
-    cursor: pointer;
-}
-.logo img{
-    display: block;
-    width: 70px; 
-    height: 70px;
-    margin-right: 30px;
+.left-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 5%;
 }
 
-.logo.mobile{
-    display:none;
+.left-menu span {
+  margin: 0 15px 0 15px;
+  cursor: pointer;
 }
 
-.fa-chevron-down{
-    font-size: xx-small;
-    margin-left: 4px;
+.logo img {
+  display: block;
+  width: 70px;
+  height: 70px;
+  margin-right: 30px;
 }
 
-.right-menu{
-    margin-right: 5%;
-    display: flex; 
-    align-items: center;
-}
-.right-menu i, .right-menu span{
-    margin: 0 15px 0 15px;
-    cursor: pointer;
+.logo.mobile {
+  display: none;
 }
 
-.right-menu a{
-    text-decoration: none;
-    color:black; 
+.fa-chevron-down {
+  font-size: xx-small;
+  margin-left: 4px;
 }
 
-.cart-notification{
-    background-color: red;
-    border-radius: 50%;
-    height: 15px;
-    width: 15px; 
-    margin:0; 
-    position: relative;
-    right: 20px;
-    bottom: 5px;
-    font-size: 10px;
-    color:white;
-    display: flex; 
-    align-items: center;
-    justify-content: center;
+.right-menu {
+  margin-right: 5%;
+  display: flex;
+  align-items: center;
 }
 
-
-.modal{
-    width:100%;
+.right-menu i, .right-menu span {
+  margin: 0 15px 0 15px;
+  cursor: pointer;
 }
 
-div span:hover{
-    color:var(--primary-color);
-}
-.fa-shopping-cart:hover, .fa-search:hover{
-   color: var(--primary-color);
+.right-menu a {
+  text-decoration: none;
+  color: black;
 }
 
-.navbar-menu a{
-    text-decoration: none;
-    color:black;
-    transition: all .2s; 
-}
-
-.navbar-menu a.active{
-    color:var(--primary-color)
-}
-
-.navbar-menu a:hover{
-    color:var(--primary-color); 
-}
-
-.navTab{
-    display: none; 
-}
-
-app-teams{
-   opacity: 0;
-}
-app-sidebar{
-    display: none;
-    left: -300px;  
-    position: absolute;
+.cart-notification {
+  background-color: red;
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+  margin: 0;
+  position: relative;
+  right: 20px;
+  bottom: 5px;
+  font-size: 10px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
+.modal {
+  width: 100%;
+}
+
+div span:hover {
+  color: var(--primary-color);
+}
+
+.fa-shopping-cart:hover, .fa-search:hover {
+  color: var(--primary-color);
+}
+
+.navbar-menu a {
+  text-decoration: none;
+  color: black;
+  transition: all .2s;
+}
+
+.navbar-menu a.active {
+  color: var(--primary-color)
+}
+
+.navbar-menu a:hover {
+  color: var(--primary-color);
+}
+
+.navTab {
+  display: none;
+}
+
+app-sidebar {
+  display: none;
+  left: -300px;
+  position: absolute;
+}
 
 
 /* app-sidebar.opened{
-    
+
 }
 
 app-sidebar.closed{
@@ -129,61 +136,62 @@ app-sidebar.closed{
 
 @media screen and (max-width: 800px) {
 
-    .right-menu .fa-search{
-        display: none; 
-    }
+  .right-menu .fa-search {
+    display: none;
+  }
 
-    .right-menu .login{
-        display:none;
-    }
+  .right-menu .login {
+    display: none;
+  }
 
-    .logo.mobile{
-        display:block; 
-    }
+  .logo.mobile {
+    display: block;
+  }
 
-    .logo.mobile img{
-        margin: 0;
-    }
-    .logo.desktop{
-        display: none;
-    }
+  .logo.mobile img {
+    margin: 0;
+  }
 
-    .navbar-menu{
-        display:none;
-    }
+  .logo.desktop {
+    display: none;
+  }
 
-    .navTab{
-        display: block;
-        font-size: 20px;
-        cursor: pointer;
-    }
+  .navbar-menu {
+    display: none;
+  }
 
-    app-sidebar{
-        display:block; 
-        position: absolute;
-        left: -300px;  
-        /* height: 100%; */
-    }
-    
-    app-sidebar.opened{
-      animation-name: openSideBar;
-      animation-duration: .5s;
-      animation-timing-function: ease-out;
-      animation-fill-mode: forwards;
-      box-shadow: 0 0 0 10000px rgb(0, 0, 0,.50);  
+  .navTab {
+    display: block;
+    font-size: 20px;
+    cursor: pointer;
+  }
 
-    }
-    
-    app-sidebar.closed{
-        animation-name: closeSideBar;
-        animation-duration: .5s;
-        animation-timing-function: ease-out;
-        animation-fill-mode: forwards;
-        box-shadow: none;
-    
-    }
+  app-sidebar {
+    display: block;
+    position: absolute;
+    left: -300px;
+    /* height: 100%; */
+  }
 
-    
+  app-sidebar.opened {
+    animation-name: openSideBar;
+    animation-duration: .5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    box-shadow: 0 0 0 10000px rgb(0, 0, 0, .50);
+
+  }
+
+  app-sidebar.closed {
+    animation-name: closeSideBar;
+    animation-duration: .5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    box-shadow: none;
+
+  }
+
+
 }
 
 

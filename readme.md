@@ -4,7 +4,7 @@
 This is a Single Page Appliaction with client-side rendering. 
 The frontend client makes API calls to the backend server when it is running.
 
-#### Live Demo: [http://foxgaming.s3-website.us-east-2.amazonaws.com/](http://foxgaming.s3-website.us-east-2.amazonaws.com/) (down currently) 
+#### Live Demo: [http://achrafel-frontend.s3-website.eu-north-1.amazonaws.com//) (down currently) 
 ![Demo](demo.PNG)
 
 

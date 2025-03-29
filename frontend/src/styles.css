@@ -4,6 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 /*@import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';*/
 /*@import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';*/
+/*@import '~mdb-angular-ui-kit/assets/scss/mdb.scss';*/
 @import '~ngx-toastr/toastr';
 
 .toast-title, .toast-message {
@@ -48,4 +49,3 @@ body.overflow-off{
     overflow: hidden;
 }
 
-@import '~mdb-angular-ui-kit/assets/scss/mdb.scss';

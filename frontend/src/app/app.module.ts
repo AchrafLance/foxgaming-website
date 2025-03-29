@@ -13,7 +13,7 @@ import { LoginComponent } from './authentication/login/login.component';
 import { RegisterComponent } from './authentication/register/register.component';
 import {AppRoutingModule } from './app-routing-module';
 import { ForgotPasswordComponent } from './authentication/forgot-password/forgot-password.component';
-import {IvyCarouselModule} from 'angular-responsive-carousel';
+import {CarouselModule } from 'ngx-owl-carousel-o';
 import { CardComponent } from './main/shop/card/card.component';
 import { ProductDetailsComponent } from './main/shop/product-details/product-details.component';
 import { CartComponent } from './main/cart/cart.component';
@@ -54,21 +54,21 @@ import { ChangePasswordComponent } from './authentication/change-password/change
     ChangePasswordComponent,
   ],
   imports: [
-    AppRoutingModule, 
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    IvyCarouselModule,
+    CarouselModule,
     FormsModule,
-    HttpClientModule,   
+    HttpClientModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right'
-    }), 
-    NgxSpinnerModule 
+    }),
+    NgxSpinnerModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
-  
+
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}

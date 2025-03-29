@@ -4,14 +4,14 @@
             <h1>MERCH</h1>
             <h2>Fox Gaming <span>Merch</span></h2>
             <h3>EXPLORE WHAT'S TRENDING</h3>
-            <img src="../../../../assets/senyu.png" alt=""> 
+            <img src="../../../../assets/senyu.png" alt="">
         </div>
         <div class="card-container">
             <div class="card" *ngFor="let product of productList">
                 <img (click)="onVisiteProduct(product)" src="{{product.productIcon}}" alt="">
                 <h1>{{product.productDescription}}</h1>
                 <h2>{{product.productPrice}} MAD</h2>
-                <i title="add to wishlist" 
+                <i title="add to wishlist"
                 (click)="addToWishlist(product)" class="fas fa-heart"></i>
                 <i title="add to cart" (click)="onVisiteProduct(product)" class="fas fa-shopping-cart"></i>
             </div>

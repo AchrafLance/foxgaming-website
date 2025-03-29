@@ -22,6 +22,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name="users")
 public class User  extends DateAudit {
 
     @Id

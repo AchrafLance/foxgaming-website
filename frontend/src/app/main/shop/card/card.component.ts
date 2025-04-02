@@ -4,44 +4,43 @@ import { ProductInfo } from 'src/app/models/productInfo';
 import { ProductService } from 'src/app/services/product-service';
 import { WishlistService } from 'src/app/services/wishlist-service';
 import { ToastrService } from 'ngx-toastr';
+import { UtilService } from '../../../services/util-service';
+
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css']
+  styleUrls: ['./card.component.css'],
 })
 export class CardComponent implements OnInit {
+  productList!: ProductInfo[];
 
-  productList: ProductInfo[];  
-
-
-  constructor( private route: Router,  
+  constructor(
+    private route: Router,
     private productService: ProductService,
-    private wishlistService: WishlistService, 
-    private toastrSerivce: ToastrService) {  }
+    private wishlistService: WishlistService,
+    private toastrSerivce: ToastrService,
+    private utilService: UtilService,
+  ) {}
 
   ngOnInit(): void {
-    this.productService.getAllProducts().subscribe((data:ProductInfo[]) => {
-      if(data){
-        this.productList = data; 
-        console.log(this.productList);
+    this.productList = this.utilService.mockProductList;
+    this.productService.getAllProducts().subscribe((data: ProductInfo[]) => {
+      if (data) {
+        this.productList = data;
       }
-    })
-    console.log(this.productList);
+    });
   }
 
-  onVisiteProduct(product:ProductInfo){
-    this.route.navigate(['shop/product/', product.productId]); 
+  onVisitProduct(product: ProductInfo) {
+    this.route.navigate(['shop/product/', product.productId]);
   }
 
-  addToWishlist(product: ProductInfo){
-    console.log(product);
-    this.wishlistService.addItemToWishlist(product).subscribe(data =>{
-      if(data){
+  addToWishlist(product: ProductInfo) {
+    this.wishlistService.addItemToWishlist(product).subscribe((data) => {
+      if (data) {
         this.wishlistService.wishlistItems.push(product);
-        this.toastrSerivce.success("item added to wishlist", "Success")
+        this.toastrSerivce.success('item added to wishlist', 'Success');
       }
-    })
-
+    });
   }
-
 }

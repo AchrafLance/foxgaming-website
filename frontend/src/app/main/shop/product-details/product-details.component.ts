@@ -165,12 +165,18 @@ export class ProductDetailsComponent implements OnInit {
 
   onAddToCard(product: ProductInfo) {
     let order = new Order();
+    let orders = [];
     order.quantity = this.selectedQuantity;
     order.size = this.selectedSize;
     order.product = product;
+    orders.push(order);
+    this.cartService.cartItems.next(orders);
+    let cartCount = this.cartService.cartCount.value;
+    this.cartService.cartCount.next(++cartCount);
+
     this.cartService.addItemToCart(order).subscribe((data) => {
       if (data) {
-        this.cartService.cartItems.push(order);
+        this.cartService.cartItems.next(orders);
         let cartCount = this.cartService.cartCount.value;
         this.cartService.cartCount.next(++cartCount);
         this.toastrService.success('item addedd to cart', 'Success');

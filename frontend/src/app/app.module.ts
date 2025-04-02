@@ -6,14 +6,14 @@ import { TopHeaderComponent } from './header/top-header/top-header.component';
 import { NavbarComponent } from './header/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TeamsComponent } from './header/navbar/teams/teams.component';
-import { ShopComponent } from "./main/shop/shop.component";
+import { ShopComponent } from './main/shop/shop.component';
 import { FooterComponent } from './footer/footer.component';
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { RegisterComponent } from './authentication/register/register.component';
-import {AppRoutingModule } from './app-routing-module';
+import { AppRoutingModule } from './app-routing-module';
 import { ForgotPasswordComponent } from './authentication/forgot-password/forgot-password.component';
-import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CardComponent } from './main/shop/card/card.component';
 import { ProductDetailsComponent } from './main/shop/product-details/product-details.component';
 import { CartComponent } from './main/cart/cart.component';
@@ -23,13 +23,14 @@ import { JwtInterceptor } from './_interceptors/jwt-interceptor';
 import { ErrorInterceptor } from './_interceptors/error-interceptor';
 import { SidebarComponent } from './header/sidebar/sidebar.component';
 import { ToastrModule } from 'ngx-toastr';
-import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { NewsComponent } from './main/news/news.component';
 import { MediaComponent } from './main/media/media.component';
 import { AboutComponent } from './main/about/about.component';
 import { SquadsComponent } from './main/squads/squads.component';
 import { ChangePasswordComponent } from './authentication/change-password/change-password.component';
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -54,25 +55,25 @@ import { ChangePasswordComponent } from './authentication/change-password/change
     ChangePasswordComponent,
   ],
   imports: [
-    AppRoutingModule, 
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    IvyCarouselModule,
+    CarouselModule,
     FormsModule,
-    HttpClientModule,   
+    HttpClientModule,
     ToastrModule.forRoot({
       timeOut: 3000,
-      positionClass: 'toast-top-right'
-    }), 
-    NgxSpinnerModule 
+      positionClass: 'toast-top-right',
+    }),
+    NgxSpinnerModule,
+    NgOptimizedImage,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
-  
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

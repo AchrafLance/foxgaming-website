@@ -1,52 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../services/cart-service';
-import { UtilService } from '../services/util-service';
-import { NgxSpinnerService } from "ngx-spinner";
-
+import { NgxSpinnerService } from 'ngx-spinner';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  styleUrls: ['./main.component.css'],
 })
 export class MainComponent implements OnInit {
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private cartService: CartService,
+    private ngxSpinner: NgxSpinnerService,
+  ) {}
 
-  carouselBg:boolean; 
-
-  constructor(private activatedRoute: ActivatedRoute,private cartService:CartService, 
-    private utilService:UtilService, private router:Router, 
-    private ngxSpinner:NgxSpinnerService) { }
+  carouselOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    navSpeed: 600,
+  };
 
   ngOnInit(): void {
-    this.ngxSpinner.show(); 
-
-
-    this.utilService.carouselBg.subscribe(data => {
-      this.carouselBg = data;
-      console.log(this.carouselBg)
-    })
-
-    this.activatedRoute.data.subscribe((data: any) =>{
-      if(data){
-        this.ngxSpinner.show(); 
-        this.cartService.cartItems = data.cartItems; 
-        this.cartService.cartCount.next(data.cartItems.length); 
-      }
-  
-    }, error =>{
-      console.log(error)
-    })
-
-    setInterval(()=> {
-      this.ngxSpinner.hide();
-    }, 1000)
-
+    // this.activatedRoute.data.subscribe((data: any) => {
+    //   if (data) {
+    //     this.ngxSpinner.show();
+    //     this.cartService.cartItems = data.cartItems;
+    //     this.cartService.cartCount.next(data.cartItems.length);
+    //   }
+    // });
   }
-
-  onShowTeams(){
-    this.router.navigate(["/squads"])
-
-  }
-
 }
